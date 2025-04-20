@@ -1,0 +1,3939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera | Build Skills with Online Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Add React and Font Awesome CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary-blue: #0056D2;
+            --primary-blue-hover: #004FC4;
+            --text-dark: #000000;
+            --text-medium: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --section-bg: #F9F9F9;
+            --section-blue: #EEF5FF;
+            --chip-bg: #F2F2F2;
+            --footer-bg: #000000;
+            --footer-text: #CCCCCC;
+            --border-light: #E5E5E5;
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+
+            /* Container */
+            --container-max: 1200px;
+            --container-padding: 48px;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+
+            /* Fluid typography */
+            --fs-xl: clamp(2rem, 5vw, 4rem);
+            /* 32px - 64px */
+            --fs-lg: clamp(1.5rem, 4vw, 2.25rem);
+            /* 24px - 36px */
+            --fs-md: clamp(1rem, 3vw, 1.25rem);
+            /* 16px - 20px */
+            --fs-sm: clamp(0.875rem, 2vw, 1rem);
+            /* 14px - 16px */
+
+            /* Fluid spacing */
+            --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+            --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+            --spacing-md: clamp(1rem, 3vw, 1.5rem);
+            --spacing-lg: clamp(1.5rem, 4vw, 2rem);
+            --spacing-xl: clamp(2rem, 5vw, 3rem);
+            --spacing-xxl: clamp(3rem, 6vw, 4rem);
+
+            /* Container */
+            --container-max: min(1200px, 90vw);
+            --container-padding: clamp(1rem, 5vw, 3rem);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Source Sans Pro', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Responsive container */
+        .container {
+            width: 90%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .img-placeholder {
+            background: var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+            min-height: 150px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-sm {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .mb-md {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .mb-lg {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .mb-xl {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .mt-sm {
+            margin-top: var(--spacing-sm);
+        }
+
+        .mt-md {
+            margin-top: var(--spacing-md);
+        }
+
+        .mt-lg {
+            margin-top: var(--spacing-lg);
+        }
+
+        .mt-xl {
+            margin-top: var(--spacing-xl);
+        }
+
+        /* Typography Utility Classes */
+        .text-regular {
+            font-weight: 400;
+        }
+
+        .text-medium {
+            font-weight: 500;
+        }
+
+        .text-semibold {
+            font-weight: 600;
+        }
+
+        .text-bold {
+            font-weight: 700;
+        }
+
+        /* Header Styles */
+        .audience-bar {
+            height: 32px;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+            border-bottom: none;
+        }
+
+        .audience-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .audience-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .audience-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .audience-links a.active {
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+
+        .header {
+            background: var(--white);
+            height: 56px;
+            position: fixed;
+            top: 32px;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            transition: top 0.3s ease;
+        }
+
+        .header.no-audience-bar {
+            top: 0;
+        }
+
+        .header-content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo {
+            height: 32px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-right: var(--spacing-md);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex: 1;
+            height: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            height: 100%;
+            padding: 8px 0;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            background: transparent;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            height: 40px;
+            margin: auto 0;
+        }
+
+        .dropdown button:hover,
+        .dropdown button:focus {
+            background: rgba(0, 86, 210, 0.04);
+            outline: none;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: white;
+            min-width: 280px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            padding: 24px;
+            z-index: 1000;
+        }
+
+        /* Add padding bridge to prevent hover loss */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 16px;
+            background: transparent;
+        }
+
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 0;
+            width: 100%;
+            height: 16px;
+            background: transparent;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown.active .dropdown-content,
+        .dropdown button:focus+.dropdown-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            width: max-content;
+        }
+
+        .dropdown-section {
+            min-width: 200px;
+        }
+
+        .dropdown-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1F1F1F;
+            margin-bottom: 16px;
+        }
+
+        .dropdown-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .dropdown-section ul li a {
+            color: #1F1F1F;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s;
+            display: block;
+            line-height: 1.3;
+        }
+
+        .dropdown-section ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .dropdown-section .view-all {
+            color: var(--primary-blue);
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .dropdown-section .view-all:hover {
+            text-decoration: underline;
+        }
+
+        .search-bar {
+            position: relative;
+            flex: 1;
+            max-width: 480px;
+            margin-left: 16px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 40px;
+            padding: 8px 16px 8px 48px;
+            border: 1px solid #E5E5E5;
+            border-radius: 24px;
+            font-size: 14px;
+            background: #F8F9FA;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: white;
+            box-shadow: 0 0 0 1px var(--primary-blue);
+            border-radius: 24px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7780;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-left: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1F1F1F;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background: transparent;
+            padding: 8px 16px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 86, 210, 0.04);
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            /* Account for fixed header */
+            background: var(--white);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .hero-text {
+            grid-column: span 6;
+        }
+
+        .hero h1 {
+            font-size: var(--fs-xl);
+            font-weight: 800;
+            color: #000;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: var(--fs-md);
+            color: #333;
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.5;
+        }
+
+        .hero-image {
+            grid-column: span 6;
+            width: 560px;
+            height: 420px;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+        }
+
+        /* Partners Section Styles */
+        .partners {
+            padding: 48px 0;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .partners .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .partners h2 {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+        }
+
+        .partner-logos {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .partner-logo {
+            height: 40px;
+            object-fit: contain;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+        }
+
+        /* Role Selection Styles */
+        .roles {
+            padding: 48px 0;
+            background: #F2F5FA;
+            margin: 48px;
+            border-radius: 16px;
+        }
+
+        .roles .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+            display: flex;
+            gap: 48px;
+        }
+
+        .roles-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px 0;
+        }
+
+        .roles-main {
+            flex: 1;
+        }
+
+        .roles h2 {
+            font-size: var(--fs-lg);
+            font-weight: 700;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            text-align: left;
+        }
+
+        .roles p {
+            font-size: var(--fs-md);
+            color: #1F1F1F;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .explore-all {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: inline-block;
+            background: var(--primary-blue);
+            padding: 12px 32px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .explore-all:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        .explore-all::after {
+            display: none;
+        }
+
+        .role-filters {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+            padding: 4px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            align-items: center;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+            /* overflow-x: auto; */
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+        }
+
+        .role-filter {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #1F1F1F;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .role-filter:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .role-filter.active {
+            background: var(--primary-blue);
+            color: #FFFFFF;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .role-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        .role-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1F1F1F;
+            margin-bottom: 6px;
+        }
+
+        .role-description {
+            font-size: 8px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .role-metrics {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        .role-credentials {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 20px;
+            border-top: 1px solid #E5E5E5;
+            background: #FFFFFF;
+        }
+
+        .credential-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .credential-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .credential-logo {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .credential-name {
+            font-size: 14px;
+            color: var(--primary-blue);
+        }
+
+        .more-link {
+            font-size: 14px;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 1200px) {
+            .roles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .roles .container {
+                flex-direction: column;
+            }
+
+            .roles-sidebar {
+                width: 100%;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* GenAI Section Styles */
+        .genai {
+            padding: 48px 0;
+            background: #F9F9F9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .genai-content {
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .genai h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .genai p {
+            font-size: 18px;
+            color: var(--text-medium);
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .genai-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .genai-filter {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #E5E5E5;
+            background: var(--white);
+            color: var(--text-medium);
+            transition: all 0.2s;
+        }
+
+        .genai-filter:hover {
+            border-color: var(--primary-blue);
+            background: rgba(0, 86, 210, 0.04);
+        }
+
+        .genai-filter.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .genai-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .genai-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+        }
+
+        .genai-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .genai-card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .genai-card-content {
+            padding: 24px;
+        }
+
+        .genai-provider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .genai-provider-logo {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .genai-provider-name {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .genai-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .genai-card-type {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .genai-accent {
+            position: absolute;
+            right: -100px;
+            top: 0;
+            height: 100%;
+            width: 800px;
+            background-image: url('https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/images/6bb3e56bee1039824ca0e77ca81fbaa7.png?auto=format%2Ccompress&dpr=1&w=800');
+            background-size: cover;
+            background-position: left center;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .view-all-genai {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .view-all-genai:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        .view-all-genai::after {
+            content: "→";
+            margin-left: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .genai-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .genai-accent {
+                opacity: 0.4;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .genai-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .genai h2 {
+                font-size: 28px;
+            }
+
+            .genai p {
+                font-size: 16px;
+            }
+        }
+
+        /* Degree Programs Section */
+        .degree-programs {
+            padding: 48px 0;
+            background: var(--white);
+            margin-bottom: 48px;
+        }
+
+        .degree-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .degree-programs .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+        }
+
+        .degree-programs h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .degree-programs .subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1F1F1F;
+            margin-bottom: 32px;
+        }
+
+        .degree-footnote {
+            font-size: 12px;
+            color: #636363;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        .degree-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .degree-card {
+            border: 1px solid #E5E5E5;
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .degree-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .degree-content {
+            padding: 16px;
+        }
+
+        .university-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        .university-name {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+        }
+
+        .degree-title {
+            font-size: 16px;
+            color: #1F1F1F;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .degree-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 8px;
+            background: #F3F3F3;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #636363;
+        }
+
+        .degree-tag svg {
+            margin-right: 4px;
+        }
+
+        .degree-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .degree-actions .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .show-more {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 16px;
+        }
+
+        .view-all {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .view-all::after {
+            content: "→";
+            margin-left: 4px;
+        }
+
+        /* Explore Section Styles */
+        .explore {
+            padding: 48px 0;
+            background: var(--white);
+        }
+
+        .explore h2 {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+            padding-left: 16px;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .explore-link {
+            display: flex;
+            text-decoration: none;
+            background: var(--white);
+            transition: all 0.2s ease;
+            height: 72px;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        }
+
+        .explore-link:hover {
+            background: var(--section-blue);
+            border-color: var(--primary-blue);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+        }
+
+        .explore-icon {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .explore-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 12px 12px 12px 0;
+        }
+
+        .explore-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: #1F1F1F;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            font-family: "Source Sans Pro", Arial, sans-serif;
+        }
+
+        .explore-count {
+            font-size: 14px;
+            color: #636363;
+            line-height: 1.2;
+            font-family: "Source Sans Pro", Arial, sans-serif;
+        }
+
+        @media (max-width: 1200px) {
+            .explore-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .explore-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Outcomes Section Styles */
+        .outcomes {
+            padding: 80px 0;
+            background: #FAFAFA;
+            text-align: center;
+        }
+
+        .outcomes-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .outcomes p {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-source {
+            display: block;
+            font-size: 12px;
+            color: var(--text-medium);
+            margin-bottom: 32px;
+        }
+
+        /* Testimonials Section Styles */
+        .testimonials {
+            padding: 80px 0;
+            background: var(--white);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .testimonials-content {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .testimonials h2 {
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .testimonials-subline {
+            font-size: 18px;
+            color: var(--text-medium);
+            margin-bottom: 48px;
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            padding: 0 48px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card {
+            flex: 0 0 320px;
+            height: 360px;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+        }
+
+        .testimonial-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            object-fit: cover;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-title {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            z-index: 1;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--section-bg);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-track {
+                scroll-snap-type: x mandatory;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 0 24px;
+            }
+
+            .testimonial-card {
+                scroll-snap-align: center;
+            }
+
+            .carousel-arrow {
+                display: none;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: #FFFFFF; /* Changed background to white */
+            color: #666666; /* Lighter text color */
+            padding: 64px 0 32px;
+            border-top: 1px solid var(--border-light); /* Add top border */
+        }
+
+        .footer-content {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+            gap: 32px; /* Horizontal gutter */
+        }
+        
+        .footer-grid-row-1 {
+             margin-bottom: 40px; /* Vertical space between rows */
+        }
+
+        .footer-column h3 {
+            font-size: 16px; 
+            font-weight: 700; /* Bold */
+            color: #333333; /* Dark Gray */
+            margin-bottom: 16px; 
+            cursor: default; 
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 6px; /* Vertical spacing between links */
+        }
+
+        .footer-column ul li a {
+            color: #666666; /* Lighter gray */
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-blue); 
+        }
+        
+        /* Styles for the 4th column in the second row (badges/logo) */
+        .footer-badges-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: flex-start; /* Align to top */
+            padding-top: 40px; /* Add padding to roughly align with text columns */
+            gap: var(--spacing-md);
+        }
+        
+         .app-badge {
+            height: 40px; 
+            width: auto;
+        }
+
+        .b-corp-logo {
+            height: 60px; 
+            width: auto;
+        }
+
+        /* Final row for copyright and social */
+        .footer-final-row {
+            padding-top: 32px; /* Space above the divider */
+            margin-top: 32px; /* Space below the grid rows */
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #666666;
+            order: 1; 
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            order: 2; 
+        }
+
+        .social-link {
+            color: #000000; 
+            font-size: 20px; 
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-block; 
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+
+        .social-link:hover {
+            color: var(--primary-blue); 
+        }
+
+        /* Remove obsolete styles */
+        /* .footer-bottom, .footer-bottom-content, .footer-bottom-top-row, .footer-bottom-bottom-row, .footer-learn-anywhere, .footer-left h4, .footer-copyright-social no longer needed as structured before */
+
+
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+            }
+            .footer-badges-column {
+                grid-column: span 2; /* Make badges span full width below */
+                align-items: center; /* Center badges */
+                padding-top: 20px; /* Reduce top padding */
+            }
+        }
+
+        @media (max-width: 768px) {
+             .footer-grid {
+                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
+                gap: 0;
+             }
+             .footer-grid-row-1 {
+                 margin-bottom: 0; /* Remove margin for accordion */
+             }
+            .footer-column {
+                border-bottom: 1px solid var(--border-light); 
+            }
+
+            .footer-column h3 {
+                padding: 16px 16px 16px 0; /* Add padding for click area */
+                margin: 0;
+                position: relative;
+                cursor: pointer; 
+                color: #333333; 
+            }
+
+            .footer-column h3::after {
+                content: '+';
+                position: absolute;
+                right: 16px; /* Position accordion icon */
+                transition: transform 0.3s;
+                color: #666666; 
+            }
+
+            .footer-column.active h3::after {
+                transform: rotate(45deg);
+            }
+
+            .footer-column ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding-left: 0; /* Remove potential indent */
+            }
+
+            .footer-column.active ul {
+                max-height: 500px; 
+                padding-bottom: 16px;
+            }
+            .footer-badges-column {
+                padding: 20px 0; /* Adjust padding */
+                border-bottom: 1px solid var(--border-light);
+            }
+             .footer-final-row {
+                 flex-direction: column-reverse;
+                 align-items: flex-start;
+             }
+             .copyright {
+                 text-align: left;
+             }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr; /* Single column */
+            }
+             .footer-badges-column {
+                grid-column: span 1; /* Span 1 column */
+             }
+        }
+
+        /* Enterprise Banner Styles */
+        .enterprise {
+            padding: 64px 0;
+            background: #EEF5FF;
+        }
+
+        .enterprise-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .enterprise h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .enterprise p {
+            font-size: 16px;
+            color: var(--text-medium);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .enterprise-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
+        .enterprise-link {
+            font-size: 15px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .enterprise-link:hover {
+            text-decoration: underline;
+        }
+
+        .enterprise-logos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .enterprise-logo {
+            height: 32px;
+            filter: grayscale(100%);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .enterprise-logo.visible {
+            opacity: 0.8;
+            transform: translateY(0);
+        }
+
+        .enterprise-logo:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .enterprise {
+                padding: 48px 24px;
+            }
+
+            .enterprise-buttons {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .enterprise-logos {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+
+            .enterprise-logo {
+                height: 24px;
+            }
+        }
+
+        /* CTA Section Styles */
+        .cta {
+            padding: 64px 0;
+            background: #F9F9F9;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .cta h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 16px;
+            color: var(--text-medium);
+            margin-bottom: 32px;
+        }
+
+        .jobs-footnote {
+            font-size: 12px;
+            color: var(--text-medium);
+            text-align: left;
+            margin-top: 24px;
+        }
+
+        .role-preferences-title {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .role-preferences-list {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .hero-btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-btn.btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+        }
+
+        .hero-btn.btn-primary:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        .hero-btn.btn-outline {
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            background: transparent;
+        }
+
+        .hero-btn.btn-outline:hover {
+            background: rgba(0, 86, 210, 0.04);
+        }
+
+        /* Responsive header */
+        @media (max-width: 1024px) {
+            .nav-group {
+                gap: var(--spacing-sm);
+            }
+
+            .nav-right {
+                gap: var(--spacing-md);
+            }
+
+            .search-bar {
+                max-width: 320px;
+            }
+        }
+
+        /* Career Game Modal Styles */
+        .career-game-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .career-game-modal.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .career-game-content {
+            background: #f7f9fc;
+            border-radius: 24px;
+            padding: 32px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .career-game-modal.active .career-game-content {
+            transform: translateY(0);
+        }
+
+        .career-game-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .career-game-close:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .career-progress {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .career-progress-bar {
+            height: 100%;
+            background: #6366f1;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .career-step-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        .career-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .career-option-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .career-option-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .career-option-card.selected {
+            background: #6366f1;
+            color: white;
+            border-color: #4f46e5;
+        }
+
+        .career-option-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .career-option-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .career-summary {
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+            margin-top: 32px;
+        }
+
+        .career-summary h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+        .career-summary-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .career-summary-list li {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .career-summary-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+        }
+
+        .career-restart-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.2s;
+        }
+
+        .career-restart-btn:hover {
+            background: #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .career-game-content {
+                padding: 24px;
+                width: 95%;
+            }
+
+            .career-options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Career Decision Game Styles */
+        .career-decision-game {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .career-decision-game.active {
+            display: flex;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-game {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+
+        .close-game:hover {
+            background-color: #f0f0f0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #0056D2;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .step-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f1f1f;
+            margin-bottom: 24px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: #0056D2;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-card.selected {
+            background: #0056D2;
+            border-color: #0056D2;
+            color: white;
+        }
+
+        .option-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .option-label {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .summary-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .summary-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary-item {
+            margin-bottom: 24px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .summary-item::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0056D2;
+        }
+
+        .restart-button {
+            background: #0056D2;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.2s;
+        }
+
+        .restart-button:hover {
+            background: #004099;
+        }
+
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 24px;
+                width: 95%;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Add these new styles in the CSS section */
+        .current-suggestion {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #666;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .current-suggestion i {
+            color: #ffd700;
+            font-size: 20px;
+        }
+
+        .career-suggestion {
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+        }
+
+        .career-suggestion h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: #1f1f1f;
+        }
+
+        .career-suggestion-content {
+            background: #f8f9fa;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .career-icon {
+            width: 80px;
+            height: 80px;
+            background: #0056D2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .career-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .career-suggestion h4 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: #1f1f1f;
+        }
+
+        .career-description {
+            text-align: left;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .career-description ul {
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .career-description li {
+            margin-bottom: 8px;
+        }
+
+        .career-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-item i {
+            color: #0056D2;
+            font-size: 24px;
+        }
+
+        .career-submit-btn {
+            background: #0056D2;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.2s;
+        }
+
+        .career-submit-btn:hover {
+            background: #004099;
+        }
+
+        .career-summary-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .career-summary-list li i {
+            color: #0056D2;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .recommended-courses {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .recommended-courses h3 {
+            margin-bottom: 24px;
+            font-size: 24px;
+            color: #1f1f1f;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h5 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .course-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .course-info {
+            margin-top: auto;
+        }
+
+        .course-rating {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #f5c518;
+            display: flex;
+            gap: 2px;
+        }
+
+        .stars i {
+            font-size: 16px;
+        }
+
+        .rating-count {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-light);
+            padding-top: 8px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .course-duration i {
+            color: var(--primary-blue);
+        }
+
+        .course-duration span {
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cds-CommonCard-creditType {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-blue);
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .cds-CommonCard-icon {
+            color: #0056D2;
+        }
+
+        .css-ls7ln4 {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .learner-outcomes {
+            background-color: #f5f7f8;
+            padding: 0;
+            width: 100%;
+        }
+
+        .outcomes-container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .outcomes-image img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .outcomes-content {
+            flex: 1;
+            max-width: 570px;
+        }
+
+        .outcomes-content h2 {
+            font-size: 32px;
+            line-height: 40px;
+            font-weight: 700;
+            color: #1c1d1f;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .outcomes-stats {
+            font-size: 16px;
+            line-height: 24px;
+            color: #1c1d1f;
+            margin-bottom: 24px;
+        }
+
+        .outcomes-stats strong {
+            font-weight: 700;
+        }
+
+        .outcomes-report {
+            color: #0056d2;
+            text-decoration: underline;
+            font-weight: 500;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .outcomes-report:hover {
+            color: #00419e;
+        }
+
+        .outcomes-cta {
+            display: inline-block;
+            background-color: #0056d2;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 12px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .outcomes-cta:hover {
+            background-color: #00419e;
+        }
+
+        @media (max-width: 1024px) {
+            .outcomes-container {
+                flex-direction: column;
+                gap: 48px;
+                text-align: center;
+            }
+
+            .outcomes-content {
+                max-width: 100%;
+            }
+
+            .outcomes-image img {
+                margin: 0 auto;
+            }
+        }
+
+        .personal-goals-section {
+            background-color: #fff;
+            padding: var(--spacing-xxl) 0;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .personal-goals-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-xl);
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .personal-goals-image-container {
+            position: relative;
+            flex: 1.2; /* Give image container slightly more space */
+            max-width: 550px; /* Increased max-width for image */
+            overflow: hidden; /* To help clip the ring */
+        }
+
+        .orange-ring {
+            position: absolute;
+            width: 500px; /* Slightly smaller ring */
+            height: 500px; /* Slightly smaller ring */
+            border-radius: 50%;
+            border: 8px solid #FFA500;
+            top: -250px; /* Positioned more above */
+            left: -150px; /* Positioned more to the left */
+            z-index: 0;
+            border-bottom-color: transparent; /* Makes it a half-circle */
+            border-left-color: transparent; /* Makes it a half-circle */
+            transform: rotate(-45deg); /* Rotate to desired position */
+        }
+
+        .personal-goals-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: auto;
+            /* max-width: 470px; - Removed fixed max-width to allow flex sizing */
+            display: block;
+        }
+
+        .personal-goals-content {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .personal-goals-title {
+            font-size: 36px; /* Decreased font size */
+            font-weight: 600;
+            line-height: 1.2;
+            color: #212121;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .personal-goals-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #5F6368;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .join-button {
+            background-color: #0056D8;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .join-button:hover {
+            background-color: #0046b5;
+        }
+
+        .footnote {
+            font-size: 12px;
+            color: #9E9E9E;
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .personal-goals-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .personal-goals-title br {
+                display: none;
+            }
+
+            .orange-ring {
+                width: 400px;
+                height: 400px;
+                top: -200px; /* Adjust position for smaller screens */
+                left: 50%;
+                transform: translateX(-50%) rotate(-45deg); /* Center and rotate */
+            }
+
+            .personal-goals-image-container,
+            .personal-goals-content {
+                max-width: 100%;
+                flex: 1; /* Reset flex basis */
+            }
+            
+            .personal-goals-image-container {
+                 margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .personal-goals-title {
+                font-size: 32px; /* Further reduce font size on smaller screens */
+            }
+
+            .orange-ring {
+                width: 300px;   
+                height: 300px;
+                top: -150px;
+            }
+        }
+
+        .business-hero-section {
+            background-color: #F2F5FA;
+            padding: 80px var(--container-padding);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .business-hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-xxl);
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .business-hero-content {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .business-hero-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #333;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .business-hero-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #5F6368;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .business-hero-button {
+            display: inline-block;
+            background-color: #0056D8;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .business-hero-button:hover {
+            background-color: #0046b5;
+        }
+
+        .business-hero-link {
+            display: block;
+            color: #0056D8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .business-hero-link:hover {
+            text-decoration: underline;
+        }
+
+        .business-logo-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px; /* Restored: Creates the subtle internal lines */
+            background-color: #E0E4E7; /* Restored: Color of the grid lines */
+            /* border: 1px solid #E0E4E7; /* REMOVED: Border around the grid */
+            /* gap: var(--spacing-md); /* Removed: Increased gap for separation */
+            max-width: 500px;
+        }
+
+        .logo-cell {
+            background-color: #F2F5FA; /* Restored: Same as section background to reveal grid lines */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md); /* Restored original padding */
+            height: 120px; /* Restored original height */
+        }
+
+        .logo-cell img {
+            max-width: 100px;
+            max-height: 40px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 992px) {
+            .business-hero-container {
+                flex-direction: column;
+                gap: var(--spacing-xl);
+                text-align: center;
+            }
+
+            .business-hero-content,
+            .business-logo-grid {
+                max-width: 100%;
+            }
+
+            .business-logo-grid {
+                margin-top: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .business-hero-title {
+                font-size: 36px;
+            }
+
+            .business-hero-text {
+                font-size: 16px;
+            }
+
+            .business-logo-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+            }
+            
+            .logo-cell {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+             .business-logo-grid {
+                grid-template-columns: repeat(1, 1fr); /* 1 column on very small screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="audience-bar">
+        <div class="container" style="display: flex; justify-content: flex-start;">
+            <ul class="audience-links">
+                <li><a href="#" class="active">For Individuals</a></li>
+                <li><a href="#">For Businesses</a></li>
+                <li><a href="#">For Universities</a></li>
+                <li><a href="#">For Governments</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">coursera</a>
+                <div class="nav-group">
+                    <div class="nav-left">
+                        <div class="dropdown">
+                            <button aria-haspopup="true" aria-expanded="false" tabindex="0">
+                                Explore
+                                <span>▾</span>
+                            </button>
+                            <div class="dropdown-content" role="menu">
+                                <div class="dropdown-section">
+                                    <h3 id="roles-heading">Explore roles</h3>
+                                    <ul role="menu" aria-labelledby="roles-heading">
+                                        <li><a href="#" role="menuitem" tabindex="0">Data Analyst</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Project Manager</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Cyber Security Analyst</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Data Scientist</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Business Intelligence Analyst</a>
+                                        </li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Digital Marketing Specialist</a>
+                                        </li>
+                                        <li><a href="#" role="menuitem" tabindex="0">UI / UX Designer</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Machine Learning Engineer</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Social Media Specialist</a></li>
+                                        <li><a href="#" role="menuitem" tabindex="0">Computer Support Specialist</a>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="view-all" role="menuitem" tabindex="0">View all</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h3>Explore categories</h3>
+                                    <ul>
+                                        <li><a href="#">Business</a></li>
+                                        <li><a href="#">Data Science</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Computer Science</a></li>
+                                        <li><a href="#">Life Sciences</a></li>
+                                        <li><a href="#">Physical Science and Engineering</a></li>
+                                        <li><a href="#">Personal Development</a></li>
+                                        <li><a href="#">Social Sciences</a></li>
+                                        <li><a href="#">Language Learning</a></li>
+                                        <li><a href="#">Arts and Humanities</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View all</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h3>Earn a Professional Certificate</h3>
+                                    <ul>
+                                        <li><a href="#">Business</a></li>
+                                        <li><a href="#">Computer Science</a></li>
+                                        <li><a href="#">Data Science</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View all</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h3>Explore trending skills</h3>
+                                    <ul>
+                                        <li><a href="#">Python</a></li>
+                                        <li><a href="#">Artificial Intelligence</a></li>
+                                        <li><a href="#">Excel</a></li>
+                                        <li><a href="#">Machine Learning</a></li>
+                                        <li><a href="#">SQL</a></li>
+                                        <li><a href="#">Project Management</a></li>
+                                        <li><a href="#">Power BI</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View all</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-bar">
+                            <svg class="search-icon" viewBox="0 0 24 24" role="img" aria-label="search">
+                                <path
+                                    d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <input type="text" class="search-input" placeholder="What do you want to learn?"
+                                aria-label="Search courses">
+                        </div>
+                    </div>
+                    <div class="nav-right">
+                        <nav>
+                            <ul class="nav-links">
+                                <li><a href="#">Online Degrees</a></li>
+                                <li><a href="#" class="career-game-trigger">Find your New Career</a></li>
+                            </ul>
+                        </nav>
+                        <div class="auth-buttons">
+                            <a href="#" class="btn btn-outline">Log In</a>
+                            <a href="#" class="btn btn-primary">Join for Free</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Learn without limits</h1>
+                    <p>Start, switch, or advance your career with more than 10,000 courses, Professional Certificates,
+                        and degrees from world-class universities and companies.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="hero-btn btn-primary">Join for Free</a>
+                        <a href="#" class="hero-btn btn-outline">Try Coursera for Business</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/header_logo_iib0er.avif"
+                        alt="Coursera Hero Image" style="width: 459px; height: 497px; ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2>We collaborate with 350+ leading universities and companies</h2>
+            <div class="partner-logos">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/illinois-3_kcu4mj.png"
+                    alt="University of Illinois" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/duke-3_kwchcu.png"
+                    alt="Duke University" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/Google-G_360x360_f5pymy.avif"
+                    alt="Google" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/umich_d9ge2a.jpg"
+                    alt="University of Michigan" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068056/coursera/1000px-IBM_logo.svg_tvogsm.png"
+                    alt="IBM" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/imperial_fvnw2g.png"
+                    alt="Imperial College London" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/stanford_agslgi.png"
+                    alt="Stanford University" class="partner-logo">
+                <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/penn_is049s.png"
+                    alt="University of Pennsylvania" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Role Selection Section -->
+    <section class="roles">
+        <div class="container">
+            <div class="roles-sidebar">
+                <h2>Choose your role</h2>
+                <p>Gain the knowledge and skills you need to advance</p>
+                <a href="#" class="explore-all">Explore all roles</a>
+            </div>
+            <div class="roles-main">
+                <div class="role-filters">
+                    <button class="role-filter dropdown">Beginner</button>
+                    <button class="role-filter active">Popular</button>
+                    <button class="role-filter">Software Engineering & IT</button>
+                    <button class="role-filter">Business</button>
+                    <button class="role-filter">Sales & Marketing</button>
+                    <button class="role-filter">Data Science & Analytics</button>
+                    <button class="role-filter">Healthcare</button>
+                </div>
+
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068057/coursera/data-analyst-hero_2x_t4kte6.avif"
+                            alt="Data Analyst" class="role-image">
+                        <div class="role-content">
+                            <h3 class="role-title">Data Analyst</h3>
+                            <p class="role-description">A Data Analyst collects, cleans, and interprets data, using
+                                tools like Excel, SQL, and Tableau to analyze trends and provide insights for decisions.
+                            </p>
+
+                            <div class="role-preferences">
+                                <div class="role-preferences-title">If you like:</div>
+                                <p class="role-preferences-list">analyzing data to find insights, creating reports and
+                                    visualizations, working with spreadsheets and databases</p>
+                            </div>
+
+                            <div class="role-metrics">
+                                <div class="role-metric">₹270,410 median salary<sup>1</sup></div>
+                                <div class="role-metric">25,910 jobs available<sup>1</sup></div>
+                            </div>
+
+                            <div class="role-credentials">
+                                <div class="credential-title">Credentials</div>
+                                <div class="credential-list">
+                                    <a href="#" class="credential-item">
+                                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068056/coursera/IBM-Logo-Blk---Square_ntdaqy.avif"
+                                            alt="IBM" class="credential-logo">
+                                        <span class="credential-name">IBM Data Analyst</span>
+                                    </a>
+                                    <a href="#" class="credential-item">
+                                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068057/coursera/DeepLearning_sa4c5a.avif"
+                                            alt="DeepLearning.AI" class="credential-logo">
+                                        <span class="credential-name">DeepLearning.AI Data Analytics</span>
+                                    </a>
+                                    <a href="#" class="more-link">+ 5 more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/Cyber_Security_Analyst-hero_2x_xkavk0.avif"
+                            alt="Cyber Security Analyst" class="role-image">
+                        <div class="role-content">
+                            <h3 class="role-title">Cyber Security Analyst</h3>
+                            <p class="role-description">A Cyber Security Analyst monitors IT systems, analyzes threats,
+                                finds vulnerabilities, and implements measures to protect data from cyber attacks.</p>
+
+                            <div class="role-preferences">
+                                <div class="role-preferences-title">If you like:</div>
+                                <p class="role-preferences-list">protecting networks and data from cyber threats,
+                                    analyzing security vulnerabilities, developing security protocols</p>
+                            </div>
+
+                            <div class="role-metrics">
+                                <div class="role-metric">₹458,680 median salary<sup>1</sup></div>
+                                <div class="role-metric">2,347 jobs available<sup>1</sup></div>
+                            </div>
+
+                            <div class="role-credentials">
+                                <div class="credential-title">Credentials</div>
+                                <div class="credential-list">
+                                    <a href="#" class="credential-item">
+                                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/Google-G_360x360_f5pymy.avif"
+                                            alt="Google" class="credential-logo">
+                                        <span class="credential-name">Google Cybersecurity</span>
+                                    </a>
+                                    <a href="#" class="credential-item">
+                                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/MSFT-stacked-logo_FINAL_xzzg1v.avif"
+                                            alt="Microsoft" class="credential-logo">
+                                        <span class="credential-name">Microsoft Cybersecurity Analyst</span>
+                                    </a>
+                                    <a href="#" class="more-link">+ 3 more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/UI-UX_Designer-hero_2x_z3vmpt.avif"
+                            alt="UI/UX Designer" class="role-image">
+                        <div class="role-content">
+                            <h3 class="role-title">UI/UX Designer</h3>
+                            <p class="role-description">A UI/UX Designer creates and refines digital interfaces to be
+                                user-friendly and visually appealing, with skills in UI design and UX research.</p>
+
+                            <div class="role-preferences">
+                                <div class="role-preferences-title">If you like:</div>
+                                <p class="role-preferences-list">creating visually appealing and user-friendly digital
+                                    interfaces, conducting user research, designing wireframes and prototypes</p>
+                            </div>
+
+                            <div class="role-metrics">
+                                <div class="role-metric">₹275,874 median salary<sup>1</sup></div>
+                                <div class="role-metric">24,466 jobs available<sup>1</sup></div>
+                            </div>
+
+                            <div class="role-credentials">
+                                <div class="credential-title">Credentials</div>
+                                <div class="credential-list">
+                                    <a href="#" class="credential-item">
+                                        <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/Google-G_360x360_f5pymy.avif"
+                                            alt="Google" class="credential-logo">
+                                        <span class="credential-name">Google UX Design</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GenAI Section -->
+    <section class="genai">
+        <div class="container">
+            <div class="genai-content">
+                <h2>Get started with GenAI</h2>
+                <p>Identify, develop, and execute impactful GenAI business strategies.</p>
+                <div class="genai-filters">
+                    <button class="genai-filter active">New</button>
+                    <button class="genai-filter">Beginner</button>
+                    <button class="genai-filter">Popular</button>
+                    <button class="genai-filter">Tools</button>
+                </div>
+                <div class="genai-cards">
+                    <div class="genai-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/76/09db8c9e6d48238a2fad3589241fbb/juleswhite_3d_colorful_volumeric_organic_rounded_vibrant_highly_6e1e9154-a897-4822-99f5-9d2eda02aed1.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Vanderbilt University Course" class="genai-card-image">
+                        <div class="genai-card-content">
+                            <div class="genai-provider">
+                                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/89/63fef0315140268d5c0f66eee8e85e/VU_360x360.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                    alt="Vanderbilt University" class="genai-provider-logo">
+                                <span class="genai-provider-name">Vanderbilt University</span>
+                            </div>
+                            <h3 class="genai-card-title">Agentic AI and AI Agents for Leaders</h3>
+                            <div class="genai-card-type">Specialization</div>
+                        </div>
+                    </div>
+                    <div class="genai-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/31/f26d8ce3444b5190163fb093b947b4/Depositphotos_70436575_XL_program.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Microsoft Course" class="genai-card-image">
+                        <div class="genai-card-content">
+                            <div class="genai-provider">
+                                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/cc/61dbdf2c1c475d82d3b8bf8eee1bda/MSFT-stacked-logo_FINAL.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                    alt="Microsoft" class="genai-provider-logo">
+                                <span class="genai-provider-name">Microsoft</span>
+                            </div>
+                            <h3 class="genai-card-title">Microsoft AI & ML Engineering</h3>
+                            <div class="genai-card-type">Professional Certificate</div>
+                        </div>
+                    </div>
+                    <div class="genai-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/ca/1f2b5191954fdb867790ef74e8cbe3/200859-Logo-image.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="IBM Course" class="genai-card-image">
+                        <div class="genai-card-content">
+                            <div class="genai-provider">
+                                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/bb/f5ced2bdd4437aa79f00eb1bf7fbf0/IBM-Logo-Blk---Square.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                    alt="IBM" class="genai-provider-logo">
+                                <span class="genai-provider-name">IBM</span>
+                            </div>
+                            <h3 class="genai-card-title">IBM Generative AI Engineering</h3>
+                            <div class="genai-card-type">Professional Certificate</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-genai">View all GenAI</a>
+            </div>
+        </div>
+        <div class="genai-accent"></div>
+    </section>
+
+    <!-- Degree Programs Section -->
+    <section class="degree-programs">
+        <div class="degree-container">
+            <div class="section-label">Degree Programs</div>
+            <h2>Find a top degree that fits your life</h2>
+            <p class="subtitle">Breakthrough pricing on 100% online degrees from top universities.</p>
+
+            <div class="degree-grid">
+                <a href="#" class="degree-card">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/bachelor-of-science-computer-science-bits/2c1c9800-93b0-48df-b278-a5246da9e086.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="BITS Campus" class="degree-image">
+                    <div class="degree-content">
+                        <div class="university-name">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b9/c608c79b5c498a8fa55b117fc3282f/5.-Square-logo-for-landing-page---Alpha.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                alt="BITS Logo" class="university-logo">
+                            Birla Institute of Technology & Science
+                        </div>
+                        <div class="degree-title">Bachelor of Science in Computer Science</div>
+                        <div class="cds-CommonCard-creditType">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" class="cds-CommonCard-icon">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <p class="css-ls7ln4">Earn a degree</p>
+                        </div>
+                        <div class="degree-tag">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
+                            </svg>
+                            Degree
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="degree-card">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/bachelor-of-science-data-science-ai-iitguwahati/d162fb2a-536e-40a7-8e3e-ce849e964736.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="IIT Guwahati Campus" class="degree-image">
+                    <div class="degree-content">
+                        <div class="university-name">
+                            <img src="http://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/34/d6e73dc4eb4731ba332a0dc82830a9/Square-logo-for-partner-landing-page-1-1-.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                alt="IIT Guwahati Logo" class="university-logo">
+                            Indian Institute of Technology Guwahati
+                        </div>
+                        <div class="degree-title">Bachelor of Science in Data Science & AI</div>
+                        <div class="cds-CommonCard-creditType">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" class="cds-CommonCard-icon">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <p class="css-ls7ln4">Earn a degree</p>
+                        </div>
+                        <div class="degree-tag">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
+                            </svg>
+                            Degree
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="degree-card">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068057/coursera/IIT_Roorkee_ywibci.webp"
+                        alt="IIT Roorkee Campus" class="degree-image">
+                    <div class="degree-content">
+                        <div class="university-name">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/93/dafd90b13544b3844d0967bcb2fe77/iitricon.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                alt="IIT Roorkee Logo" class="university-logo">
+                            IIT Roorkee
+                        </div>
+                        <div class="degree-title">Executive MBA</div>
+                        <div class="cds-CommonCard-creditType">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" class="cds-CommonCard-icon">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <p class="css-ls7ln4">Earn a degree</p>
+                        </div>
+                        <div class="degree-tag">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
+                            </svg>
+                            Degree
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="degree-card">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/Indian_statistical_institute_bjzoki.webp"
+                        alt="Indian Statistical Institute Campus" class="degree-image">
+                    <div class="degree-content">
+                        <div class="university-name">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/67/ea8ae2575a4402ab7d212dd3b66ace/360-x-360-1-.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                                alt="Indian Statistical Institute Logo" class="university-logo">
+                            Indian Statistical Institute
+                        </div>
+
+                        <div class="degree-title">Master of Statistics</div>
+                        <div class="cds-CommonCard-creditType">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" class="cds-CommonCard-icon">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <p class="css-ls7ln4">Earn a degree</p>
+                        </div>
+                        <div class="degree-tag">
+
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
+                            </svg>
+                            Degree
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="degree-actions">
+                <button class="show-more">Show 8 more</button>
+                <a href="#" class="view-all">View all</a>
+            </div>
+
+            <p class="degree-footnote">¹Each university determines admission and the number of pre-approved prior
+                learning credits that may count toward the degree requirements according to institutional policies,
+                which may consider any existing credits you may have.</p>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="explore">
+        <div class="container">
+            <h2>Explore Coursera</h2>
+            <div class="explore-grid">
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068058/coursera/data_science_dyvye1.avif"
+                        alt="Data Science" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Data Science</div>
+                        <div class="explore-count">425+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068056/coursera/business_cuct3q.avif"
+                        alt="Business" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Business</div>
+                        <div class="explore-count">1095+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068056/coursera/computer_science_hoa51m.avif"
+                        alt="Computer Science" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Computer Science</div>
+                        <div class="explore-count">668+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/health_mviycq.avif"
+                        alt="Health" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Health</div>
+                        <div class="explore-count">471+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/social_sciences_wong8x.avif"
+                        alt="Social Sciences" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Social Sciences</div>
+                        <div class="explore-count">401+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/personal_development_gzy0fn.avif"
+                        alt="Personal Development" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Personal Development</div>
+                        <div class="explore-count">137+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068056/coursera/arts_and_humanities_pdwcmg.jpg"
+                        alt="Arts and Humanities" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Arts and Humanities</div>
+                        <div class="explore-count">338+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068060/coursera/physical_science_and_engineering_ue5ag0.avif"
+                        alt="Physical Science and Engineering" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Physical Science and Engineering</div>
+                        <div class="explore-count">413+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/language_learning_eao40o.avif"
+                        alt="Language Learning" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Language Learning</div>
+                        <div class="explore-count">150+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/information_technology_v9drkw.avif"
+                        alt="Information Technology" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Information Technology</div>
+                        <div class="explore-count">145+ courses</div>
+                    </div>
+                </a>
+                <a href="#" class="explore-link">
+                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745076504/coursera/math_and_logic_ywkurn.avif"
+                        alt="Math and Logic" class="explore-icon">
+                    <div class="explore-content">
+                        <div class="explore-title">Math and Logic</div>
+                        <div class="explore-count">70+ courses</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learner Outcomes Section -->
+    <section class="learner-outcomes">
+        <div class="outcomes-container">
+            <div class="outcomes-image">
+                <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6xXERT0XZPJDXgjPzr8Bve/d858e0cda1a5e5df2cb8accd65d5c1b7/outcomes.png?auto=format%2Ccompress&dpr=1&w=606&h=553&q=40"
+                    alt="Learner Outcomes" width="606" height="353">
+            </div>
+            <div class="outcomes-content">
+                <h2>Learner outcomes on Coursera</h2>
+                <p class="outcomes-stats">
+                    <strong>77% of learners report career benefits</strong>, such as new skills, increased pay, and new
+                    job opportunities.
+                    <a href="#" class="outcomes-report">2023 Coursera Learner Outcomes Report</a>
+                </p>
+                <a href="#" class="outcomes-cta">Join for Free</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-content">
+            <h2>What learners are saying</h2>
+            <p class="testimonials-subline">168M+ people have already joined Coursera</p>
+            <div class="testimonials-carousel">
+                <button class="carousel-arrow carousel-prev">←</button>
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/N4qrT1XIveNL5SMHSkjTH/b57854e9246bd3aa9fe9ebc51ce650d1/Circle_Kenia.png?auto=format%2Ccompress&dpr=1&w=202&h=202&q=40"
+                            alt="Sarah M." class="testimonial-avatar">
+                        <p class="testimonial-quote">"Coursera helped me transition from academia to industry. The
+                            practical skills and certification I gained were instrumental in landing my dream job."</p>
+                        <div class="testimonial-name">Sarah M.</div>
+                        <div class="testimonial-title">Data Scientist</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/N4qrT1XIveNL5SMHSkjTH/b57854e9246bd3aa9fe9ebc51ce650d1/Circle_Kenia.png?auto=format%2Ccompress&dpr=1&w=202&h=202&q=40"
+                            alt="James R." class="testimonial-avatar">
+                        <p class="testimonial-quote">"The flexibility of online learning combined with
+                            university-quality content made it possible for me to upskill while working full-time."</p>
+                        <div class="testimonial-name">James R.</div>
+                        <div class="testimonial-title">Software Engineer</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/N4qrT1XIveNL5SMHSkjTH/b57854e9246bd3aa9fe9ebc51ce650d1/Circle_Kenia.png?auto=format%2Ccompress&dpr=1&w=202&h=202&q=40"
+                            alt="Maria L." class="testimonial-avatar">
+                        <p class="testimonial-quote">"The professional certificates offered through Coursera gave me the
+                            confidence and credentials to make a successful career change."</p>
+                        <div class="testimonial-name">Maria L.</div>
+                        <div class="testimonial-title">Project Manager</div>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-next">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insert this new section *above* the personal-goals-section -->
+    <section class="business-hero-section">
+        <div class="container">
+            <div class="business-hero-container">
+                <!-- Left side: Text Content -->
+                <div class="business-hero-content">
+                    <h2 class="business-hero-title">
+                        Drive your business forward<br>by empowering your talent
+                    </h2>
+                    <p class="business-hero-text">
+                        Train teams with industry-leading experts and universities, enhanced by AI tools and recognized credentials.
+                    </p>
+                    <a href="#" class="business-hero-button">Discover Coursera for Business</a>
+                    <a href="#" class="business-hero-link">Upskill a small team? Check out Coursera for Teams →</a>
+                </div>
+                
+                <!-- Right side: Logo Grid -->
+                <div class="business-logo-grid">
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/13nB6DdjBJdV5aWWWB5DbH/115574ebbc6de3dffd98daed665dc736/loreal.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=18" alt="L'Oréal"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2aaUOe2Jitm1Z6OPdylXsL/37974ceb0982ccf2c6fabf3fa6bdb5bc/pandg.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=40" alt="P&G"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2gSh2ySvHF7nLxtb9dlQEt/764bae06b9276de25caa4ed11bf14000/tata.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=37" alt="Tata"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6cQLsEIdYwjlG4whpJ0bau/5cb01b12278ee726314800c15f08c5e2/DANONE_LOGO.png?auto=format%2Ccompress&dpr=3&w=60%25&h=36" alt="Danone"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/46IDJ7jA1jOzKUcuJEdv9x/bccbe406253ab481290052d1580d7eae/Emirates_NBD_logo.png?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Emirates NBD"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2jYSxpX0am6lmzOXiF01eb/b2dad4d9e4844a15e828990aa09b6377/Reliance_logo-2.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Reliance"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1GFMf2tN2JubXPXodUfEhU/f60a309a58fd4a5e750f0497e24a52ab/logo-capgemini.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Capgemini"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Td6rChmrhf755FaNcHMkw/7f172851005dc6275667c667ffa2678a/logo-petrobras.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Petrobras"></div>
+                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7ynjohQJbi7h24Qk5uUyPW/399503cb97a2775554f28921721d6fd1/General_Electric_logo.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="General Electric"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal goals section starts here -->
+    <section class="personal-goals-section">
+        <div class="container">
+            <div class="personal-goals-container">
+                <div class="personal-goals-image-container">
+                    <div class="orange-ring"></div>
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/front-page-rebrand/secondary-consumer-cta/Image-Next-Step.png?auto=format%2Ccompress&dpr=3&w=471&h=330&q=40" 
+                         alt="Confident woman in modern co-working space" 
+                         class="personal-goals-image">
+                </div>
+                <div class="personal-goals-content">
+                    <h2 class="personal-goals-title">
+                        Take the next step<br>
+                        toward your personal<br>
+                        and professional goals<br>
+                        with Coursera.
+                    </h2>
+                    <p class="personal-goals-text">
+                        Join now to receive personalized recommendations from the full Coursera catalog.
+                    </p>
+                    <button class="join-button">Join for Free</button>
+                </div>
+            </div>
+            <p class="footnote">
+                ¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report. Content Creator, Machine Learning Engineer and Salesforce Development Representative (1/1/2024 – 12/31/2024). All other job roles (4/1/2024 – 4/1/2025).
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Row 1 -->
+            <div class="footer-grid footer-grid-row-1">
+                <div class="footer-column">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li><a href="#">ChatGPT</a></li>
+                        <li><a href="#">Coding</a></li>
+                        <li><a href="#">Computer Science</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">DevOps</a></li>
+                        <li><a href="#">Ethical Hacking</a></li>
+                        <li><a href="#">Generative AI</a></li>
+                        <li><a href="#">Java Programming</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Analytical Skills</h3>
+                    <ul>
+                        <li><a href="#">Artificial Intelligence</a></li>
+                        <li><a href="#">Big Data</a></li>
+                        <li><a href="#">Business Analysis</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Financial Modeling</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#">Microsoft Excel</a></li>
+                        <li><a href="#">Microsoft Power BI</a></li>
+                        <li><a href="#">SQL</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Business Skills</h3>
+                    <ul>
+                        <li><a href="#">Accounting</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">Finance</a></li>
+                        <li><a href="#">Google</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">IBM</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Project Management</a></li>
+                        <li><a href="#">Social Media Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Career Resources</h3>
+                    <ul>
+                        <li><a href="#">Essential IT Certifications</a></li>
+                        <li><a href="#">High-Income Skills to Learn</a></li>
+                        <li><a href="#">How to Get a PMP Certification</a></li>
+                        <li><a href="#">How to Learn Artificial Intelligence</a></li>
+                        <li><a href="#">Popular Cybersecurity Certifications</a></li>
+                        <li><a href="#">Popular Data Analytics Certifications</a></li>
+                        <li><a href="#">What Does a Data Analyst Do?</a></li>
+                        <li><a href="#">Career Development Resources</a></li>
+                        <li><a href="#">Career Aptitude Test</a></li>
+                        <li><a href="#">Share your Coursera Learning Story</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Row 2 -->
+             <div class="footer-grid footer-grid-row-2">
+                 <div class="footer-column">
+                    <h3>Coursera</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">What We Offer</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Catalog</a></li>
+                        <li><a href="#">Coursera Plus</a></li>
+                        <li><a href="#">Professional Certificates</a></li>
+                        <li><a href="#">MasterTrack® Certificates</a></li>
+                        <li><a href="#">Degrees</a></li>
+                        <li><a href="#">For Enterprise</a></li>
+                        <li><a href="#">For Government</a></li>
+                        <li><a href="#">For Campus</a></li>
+                        <li><a href="#">Become a Partner</a></li>
+                        <li><a href="#">Social Impact</a></li>
+                        <li><a href="#">Free Courses</a></li>
+                        <li><a href="#">ECTS Credit Recommendations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">Learners</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Beta Testers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">The Coursera Podcast</a></li>
+                        <li><a href="#">Tech Blog</a></li>
+                        <li><a href="#">Teaching Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>More</h3>
+                    <ul>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Directory</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Modern Slavery Statement</a></li>
+                        <li><a href="#">Manage Cookie Preferences</a></li>
+                        <!-- Removed Do Not Sell/Share -->
+                    </ul>
+                </div>
+                 <div class="footer-badges-column">
+                     <a href="#"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg?auto=format%2Ccompress&dpr=1&w=135&h=40" alt="Download on the App Store" class="app-badge"></a>
+                     <a href="#"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png?auto=format%2Ccompress&dpr=1&w=135&h=40" alt="Get it on Google Play" class="app-badge"></a>
+                     <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/2018-B-Corp-Logo-Black-S.png?auto=format%2Ccompress&dpr=3&w=151&h=120&q=40" alt="Certified B Corporation" class="b-corp-logo">
+                 </div>
+            </div>
+
+            <!-- Final Row: Copyright and Social Links -->
+            <div class="footer-final-row">
+                 <span class="copyright">© 2025 Coursera Inc. All rights reserved.</span>
+                 <div class="social-links">
+                     <a href="#" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                     <a href="#" target="_blank" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                     <a href="#" target="_blank" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                     <a href="#" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     <a href="#" target="_blank" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                 </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div class="career-game-modal" id="careerGameModal">
+        <div class="career-game-content">
+            <button class="career-game-close" aria-label="Close modal">×</button>
+            <div class="career-progress">
+                <div class="career-progress-bar"></div>
+            </div>
+            <div id="career-game-root"></div>
+        </div>
+    </div>
+
+
+    <script type="text/babel">
+        // Add the layers data
+        const layers = [
+            {
+                title: 'Why am I switching?',
+                icon: 'fa-question-circle',
+                options: [
+                    { label: 'Money', icon: 'fa-money-bill-wave' },
+                    { label: 'Upgrade my career trajectory', icon: 'fa-chart-line' },
+                    { label: 'Passionate / Curious pursuit', icon: 'fa-heart' }
+                ],
+                suggestion: 'Write a brutally specific one-sentence goal.'
+            },
+            {
+                title: 'Risk appetite right now',
+                icon: 'fa-gauge-high',
+                options: [
+                    { label: 'High - unstable income, big upside', icon: 'fa-rocket' },
+                    { label: 'Medium - balanced move', icon: 'fa-balance-scale' },
+                    { label: 'Low - maximum stability', icon: 'fa-shield' }
+                ],
+                suggestion: 'Calculate your financial "runway" (months of expenses you can cover).'
+            },
+            {
+                title: 'Time & money I will invest in new skills',
+                icon: 'fa-hourglass-half',
+                options: [
+                    { label: 'High reskill - 12-24 months', icon: 'fa-graduation-cap' },
+                    { label: 'Medium - 6-12 months', icon: 'fa-book-open-reader' },
+                    { label: 'Low / quick - <= 3 months', icon: 'fa-bolt-lightning' }
+                ],
+                suggestion: 'Block fixed study hours in your calendar right now.'
+            },
+            {
+                title: 'Work style that energises me',
+                icon: 'fa-person-running',
+                options: [
+                    { label: 'Builder / Maker', icon: 'fa-hammer' },
+                    { label: 'Analyst / Strategist', icon: 'fa-chart-pie' },
+                    { label: 'Communicator / Facilitator', icon: 'fa-comments' }
+                ],
+                suggestion: 'Take a quick work-style inventory to confirm your bucket.'
+            },
+            {
+                title: 'Industry or mission that appeals',
+                icon: 'fa-building',
+                options: [
+                    { label: 'Tech & Data', icon: 'fa-microchip' },
+                    { label: 'Green & Social Impact', icon: 'fa-seedling' },
+                    { label: 'Creative & Media', icon: 'fa-palette' }
+                ],
+                suggestion: 'Attend one event in each shortlisted industry this month.'
+            },
+            {
+                title: 'Preferred employment model',
+                icon: 'fa-briefcase',
+                options: [
+                    { label: 'Employee', icon: 'fa-briefcase' },
+                    { label: 'Freelancer / Consultant', icon: 'fa-laptop-code' },
+                    { label: 'Founder / Co-founder', icon: 'fa-lightbulb' }
+                ],
+                suggestion: 'Sim-test the scariest model for 30 days.'
+            },
+            {
+                title: 'Lifestyle & location constraints',
+                icon: 'fa-location-dot',
+                options: [
+                    { label: 'Remote-first', icon: 'fa-globe' },
+                    { label: 'Hybrid metro-based', icon: 'fa-city' },
+                    { label: 'Location-specific / On-site', icon: 'fa-location-dot' }
+                ],
+                suggestion: 'Run a cost-of-living & salary-band comparison for two realistic cities.'
+            }
+        ];
+
+        // Career Game Component
+        function CareerGame() {
+            const [currentStep, setCurrentStep] = React.useState(0);
+            const [answers, setAnswers] = React.useState(Array(7).fill(null));
+            const [showSummary, setShowSummary] = React.useState(false);
+            const [showCareerSuggestion, setShowCareerSuggestion] = React.useState(false);
+            const [showCourses, setShowCourses] = React.useState(false);
+
+            // Update progress calculation to include current step
+            const progress = ((currentStep + (answers[currentStep] !== null ? 1 : 0)) / 7) * 100;
+
+            React.useEffect(() => {
+                const progressBar = document.querySelector('.career-progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = `${progress}%`;
+                }
+            }, [progress, currentStep, answers]);
+
+            const handleOptionClick = (optionIndex) => {
+                const newAnswers = [...answers];
+                newAnswers[currentStep] = optionIndex;
+                setAnswers(newAnswers);
+
+                if (currentStep < 6) {
+                    setCurrentStep(currentStep + 1);
+                } else {
+                    setShowSummary(true);
+                }
+            };
+
+            const handleSubmitAnswers = () => {
+                setShowCareerSuggestion(true);
+            };
+
+            const resetGame = () => {
+                setAnswers(Array(7).fill(null));
+                setCurrentStep(0);
+                setShowSummary(false);
+                setShowCareerSuggestion(false);
+                document.querySelector('.career-progress-bar').style.width = '0%';
+            };
+
+            if (showCareerSuggestion) {
+                return (
+                    <div className="career-suggestion">
+                        <h3>Based on Your Responses, We Recommend:</h3>
+                        <div className="career-suggestion-content">
+                            <div className="career-icon">
+                                <i className="fas fa-laptop-code"></i>
+                            </div>
+                            <h4>Web Designer</h4>
+                            <p className="career-description">
+                                As a Web Designer, you'll combine creativity with technical skills to create visually appealing and user-friendly websites. This role perfectly matches your interests in:
+                                <ul>
+                                    <li>Creative and visual work (indicated by your work style preference)</li>
+                                    <li>Technical skills development (shown by your willingness to invest in learning)</li>
+                                    <li>Flexible work arrangements (matching your lifestyle preferences)</li>
+                                </ul>
+                            </p>
+                            <div className="career-details">
+                                <div className="detail-item">
+                                    <i className="fas fa-money-bill-wave"></i>
+                                    <span>Average Salary: $65,000 - $95,000</span>
+                                </div>
+                                <div className="detail-item">
+                                    <i className="fas fa-chart-line"></i>
+                                    <span>Growth Rate: 13% (Faster than average)</span>
+                                </div>
+                                <div className="detail-item">
+                                    <i className="fas fa-clock"></i>
+                                    <span>Training Time: 6-12 months</span>
+                                </div>
+                            </div>
+                            <button className="career-submit-btn" onClick={() => setShowCourses(true)}>
+                                Suggest me new Courses
+                            </button>
+
+                            {showCourses && (
+                                <div className="recommended-courses">
+                                    <h3>Recommended Courses for You</h3>
+                                    <div className="courses-grid">
+                                        <div className="course-card">
+                                            <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068061/coursera/Web-dev1_wkoywq.jpg" alt="Web Development Fundamentals" className="course-image" />
+                                            <div className="course-content">
+                                                <h5>Web Development Fundamentals</h5>
+                                                <p>Master the basics of HTML, CSS, and JavaScript to build responsive websites from scratch.</p>
+                                                <div className="course-info">
+                                                    <div className="course-rating">
+                                                        <div className="stars">
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star-half-alt"></i>
+                                                        </div>
+                                                        <span className="rating-count">4.8 (12,345 reviews)</span>
+                                                    </div>
+                                                    <div className="course-duration">
+                                                        <i className="fas fa-clock"></i>
+                                                        <span>3 months</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="course-card">
+                                            <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068061/coursera/Web-dev2_nabeta.jpg" alt="Advanced Web Development" className="course-image" />
+                                            <div className="course-content">
+                                                <h5>Advanced Web Development</h5>
+                                                <p>Learn modern frameworks like React, Node.js, and build full-stack applications.</p>
+                                                <div className="course-info">
+                                                    <div className="course-rating">
+                                                        <div className="stars">
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                        </div>
+                                                        <span className="rating-count">4.9 (8,721 reviews)</span>
+                                                    </div>
+                                                    <div className="course-duration">
+                                                        <i className="fas fa-clock"></i>
+                                                        <span>4 months</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="course-card">
+                                            <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068061/coursera/Web-dev3_omtvxn.jpg" alt="UI/UX Design for Web Developers" className="course-image" />
+                                            <div className="course-content">
+                                                <h5>UI/UX Design for Web Developers</h5>
+                                                <p>Combine design principles with development skills to create beautiful user experiences.</p>
+                                                <div className="course-info">
+                                                    <div className="course-rating">
+                                                        <div className="stars">
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                            <i className="fas fa-star"></i>
+                                                        </div>
+                                                        <span className="rating-count">4.7 (15,932 reviews)</span>
+                                                    </div>
+                                                    <div className="course-duration">
+                                                        <i className="fas fa-clock"></i>
+                                                        <span>3.5 months</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                );
+            }
+
+            if (showSummary) {
+                return (
+                    <div className="career-summary">
+                        <h3>Your Career Switch Summary</h3>
+                        <ul className="career-summary-list">
+                            {layers.map((layer, index) => (
+                                <li key={index}>
+                                    <strong>
+                                        <i className={`fas ${layer.icon}`}></i> {layer.title}:
+                                    </strong>
+                                    {layer.options[answers[index]].label}
+                                </li>
+                            ))}
+                        </ul>
+                        <button className="career-submit-btn" onClick={handleSubmitAnswers}>
+                            Yes, Submit my answers
+                        </button>
+                    </div>
+                );
+            }
+
+            const currentLayer = layers[currentStep];
+
+            return (
+                <div>
+                    <h2 className="career-step-title">
+                        <i className={`fas ${currentLayer.icon}`}></i>
+                        Step {currentStep + 1} of 7: {currentLayer.title}
+                    </h2>
+                    <div className="career-options-grid">
+                        {currentLayer.options.map((option, index) => (
+                            <div
+                                key={index}
+                                className={`career-option-card ${answers[currentStep] === index ? 'selected' : ''}`}
+                                onClick={() => handleOptionClick(index)}
+                            >
+                                <i className={`career-option-icon fas ${option.icon}`}></i>
+                                <span className="career-option-label">{option.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="current-suggestion">
+                        <i className="fas fa-lightbulb"></i>
+                        <span>Suggestion: {currentLayer.suggestion}</span>
+                    </div>
+                </div>
+            );
+        }
+
+        // Move the initialization code outside DOMContentLoaded
+        const initializeCareerGame = () => {
+            console.log('Initializing career game...');
+            const careerButton = document.querySelector('.career-game-trigger');
+            const modal = document.getElementById('careerGameModal');
+            const closeBtn = modal.querySelector('.career-game-close');
+            let gameInitialized = false;
+
+            if (!careerButton || !modal || !closeBtn) {
+                console.error('Required elements not found:', {
+                    careerButton: !!careerButton,
+                    modal: !!modal,
+                    closeBtn: !!closeBtn
+                });
+                return;
+            }
+
+            console.log('Found all required elements');
+
+            function openModal() {
+                console.log('Opening modal...');
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                if (!gameInitialized) {
+                    console.log('Initializing React component...');
+                    const root = ReactDOM.createRoot(document.getElementById('career-game-root'));
+                    root.render(React.createElement(CareerGame));
+                    gameInitialized = true;
+                }
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Remove previous event listeners if any
+            careerButton.removeEventListener('click', openModal);
+            closeBtn.removeEventListener('click', closeModal);
+
+            // Add event listeners
+            careerButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Career button clicked!');
+                openModal();
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        };
+
+        // Call initialization when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCareerGame);
+        } else {
+            initializeCareerGame();
+        }
+
+        // Also call initialization after React and other scripts are loaded
+        window.addEventListener('load', initializeCareerGame);
+    </script>
+</body>
+
+</html>
