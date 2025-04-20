@@ -82,6 +82,196 @@
             color: var(--text-dark);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .popular-certificates {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .section-description {
+            font-size: 20px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 aspect ratio */
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ai-skills-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+        }
+
+        .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .degree-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0056D2;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+        }
+
+        .action-buttons {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #0056D2;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #004099;
+        }
+
+        .btn-link {
+            color: #0056D2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Responsive container */
         .container {
             width: 90%;
@@ -1374,10 +1564,13 @@
 
         /* Footer Styles */
         .footer {
-            background: #FFFFFF; /* Changed background to white */
-            color: #666666; /* Lighter text color */
+            background: #FFFFFF;
+            /* Changed background to white */
+            color: #666666;
+            /* Lighter text color */
             padding: 64px 0 32px;
-            border-top: 1px solid var(--border-light); /* Add top border */
+            border-top: 1px solid var(--border-light);
+            /* Add top border */
         }
 
         .footer-content {
@@ -1388,20 +1581,25 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
-            gap: 32px; /* Horizontal gutter */
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns per row */
+            gap: 32px;
+            /* Horizontal gutter */
         }
-        
+
         .footer-grid-row-1 {
-             margin-bottom: 40px; /* Vertical space between rows */
+            margin-bottom: 40px;
+            /* Vertical space between rows */
         }
 
         .footer-column h3 {
-            font-size: 16px; 
-            font-weight: 700; /* Bold */
-            color: #333333; /* Dark Gray */
-            margin-bottom: 16px; 
-            cursor: default; 
+            font-size: 16px;
+            font-weight: 700;
+            /* Bold */
+            color: #333333;
+            /* Dark Gray */
+            margin-bottom: 16px;
+            cursor: default;
         }
 
         .footer-column ul {
@@ -1411,44 +1609,51 @@
         }
 
         .footer-column ul li {
-            margin-bottom: 6px; /* Vertical spacing between links */
+            margin-bottom: 6px;
+            /* Vertical spacing between links */
         }
 
         .footer-column ul li a {
-            color: #666666; /* Lighter gray */
+            color: #666666;
+            /* Lighter gray */
             text-decoration: none;
             font-size: 14px;
             transition: color 0.2s;
         }
 
         .footer-column ul li a:hover {
-            color: var(--primary-blue); 
+            color: var(--primary-blue);
         }
-        
+
         /* Styles for the 4th column in the second row (badges/logo) */
         .footer-badges-column {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items horizontally */
-            justify-content: flex-start; /* Align to top */
-            padding-top: 40px; /* Add padding to roughly align with text columns */
+            align-items: center;
+            /* Center items horizontally */
+            justify-content: flex-start;
+            /* Align to top */
+            padding-top: 40px;
+            /* Add padding to roughly align with text columns */
             gap: var(--spacing-md);
         }
-        
-         .app-badge {
-            height: 40px; 
+
+        .app-badge {
+            height: 40px;
             width: auto;
         }
 
         .b-corp-logo {
-            height: 60px; 
+            height: 60px;
             width: auto;
         }
 
         /* Final row for copyright and social */
         .footer-final-row {
-            padding-top: 32px; /* Space above the divider */
-            margin-top: 32px; /* Space below the grid rows */
+            padding-top: 32px;
+            /* Space above the divider */
+            margin-top: 32px;
+            /* Space below the grid rows */
             border-top: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
@@ -1456,32 +1661,32 @@
             flex-wrap: wrap;
             gap: var(--spacing-md);
         }
-        
+
         .copyright {
             font-size: 12px;
             color: #666666;
-            order: 1; 
+            order: 1;
         }
 
         .social-links {
             display: flex;
             gap: var(--spacing-md);
-            order: 2; 
+            order: 2;
         }
 
         .social-link {
-            color: #000000; 
-            font-size: 20px; 
+            color: #000000;
+            font-size: 20px;
             text-decoration: none;
             transition: color 0.2s;
-            display: inline-block; 
+            display: inline-block;
             width: 20px;
             height: 20px;
             text-align: center;
         }
 
         .social-link:hover {
-            color: var(--primary-blue); 
+            color: var(--primary-blue);
         }
 
         /* Remove obsolete styles */
@@ -1490,41 +1695,52 @@
 
         @media (max-width: 1200px) {
             .footer-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns for medium screens */
             }
+
             .footer-badges-column {
-                grid-column: span 2; /* Make badges span full width below */
-                align-items: center; /* Center badges */
-                padding-top: 20px; /* Reduce top padding */
+                grid-column: span 2;
+                /* Make badges span full width below */
+                align-items: center;
+                /* Center badges */
+                padding-top: 20px;
+                /* Reduce top padding */
             }
         }
 
         @media (max-width: 768px) {
-             .footer-grid {
-                grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* Keep 2 columns */
                 gap: 0;
-             }
-             .footer-grid-row-1 {
-                 margin-bottom: 0; /* Remove margin for accordion */
-             }
+            }
+
+            .footer-grid-row-1 {
+                margin-bottom: 0;
+                /* Remove margin for accordion */
+            }
+
             .footer-column {
-                border-bottom: 1px solid var(--border-light); 
+                border-bottom: 1px solid var(--border-light);
             }
 
             .footer-column h3 {
-                padding: 16px 16px 16px 0; /* Add padding for click area */
+                padding: 16px 16px 16px 0;
+                /* Add padding for click area */
                 margin: 0;
                 position: relative;
-                cursor: pointer; 
-                color: #333333; 
+                cursor: pointer;
+                color: #333333;
             }
 
             .footer-column h3::after {
                 content: '+';
                 position: absolute;
-                right: 16px; /* Position accordion icon */
+                right: 16px;
+                /* Position accordion icon */
                 transition: transform 0.3s;
-                color: #666666; 
+                color: #666666;
             }
 
             .footer-column.active h3::after {
@@ -1535,33 +1751,41 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease-out;
-                padding-left: 0; /* Remove potential indent */
+                padding-left: 0;
+                /* Remove potential indent */
             }
 
             .footer-column.active ul {
-                max-height: 500px; 
+                max-height: 500px;
                 padding-bottom: 16px;
             }
+
             .footer-badges-column {
-                padding: 20px 0; /* Adjust padding */
+                padding: 20px 0;
+                /* Adjust padding */
                 border-bottom: 1px solid var(--border-light);
             }
-             .footer-final-row {
-                 flex-direction: column-reverse;
-                 align-items: flex-start;
-             }
-             .copyright {
-                 text-align: left;
-             }
+
+            .footer-final-row {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+
+            .copyright {
+                text-align: left;
+            }
         }
 
         @media (max-width: 480px) {
             .footer-grid {
-                grid-template-columns: 1fr; /* Single column */
+                grid-template-columns: 1fr;
+                /* Single column */
             }
-             .footer-badges-column {
-                grid-column: span 1; /* Span 1 column */
-             }
+
+            .footer-badges-column {
+                grid-column: span 1;
+                /* Span 1 column */
+            }
         }
 
         /* Enterprise Banner Styles */
@@ -2473,23 +2697,33 @@
 
         .personal-goals-image-container {
             position: relative;
-            flex: 1.2; /* Give image container slightly more space */
-            max-width: 550px; /* Increased max-width for image */
-            overflow: hidden; /* To help clip the ring */
+            flex: 1.2;
+            /* Give image container slightly more space */
+            max-width: 550px;
+            /* Increased max-width for image */
+            overflow: hidden;
+            /* To help clip the ring */
         }
 
         .orange-ring {
             position: absolute;
-            width: 500px; /* Slightly smaller ring */
-            height: 500px; /* Slightly smaller ring */
+            width: 500px;
+            /* Slightly smaller ring */
+            height: 500px;
+            /* Slightly smaller ring */
             border-radius: 50%;
             border: 8px solid #FFA500;
-            top: -250px; /* Positioned more above */
-            left: -150px; /* Positioned more to the left */
+            top: -250px;
+            /* Positioned more above */
+            left: -150px;
+            /* Positioned more to the left */
             z-index: 0;
-            border-bottom-color: transparent; /* Makes it a half-circle */
-            border-left-color: transparent; /* Makes it a half-circle */
-            transform: rotate(-45deg); /* Rotate to desired position */
+            border-bottom-color: transparent;
+            /* Makes it a half-circle */
+            border-left-color: transparent;
+            /* Makes it a half-circle */
+            transform: rotate(-45deg);
+            /* Rotate to desired position */
         }
 
         .personal-goals-image {
@@ -2507,7 +2741,8 @@
         }
 
         .personal-goals-title {
-            font-size: 36px; /* Decreased font size */
+            font-size: 36px;
+            /* Decreased font size */
             font-weight: 600;
             line-height: 1.2;
             color: #212121;
@@ -2561,29 +2796,33 @@
             .orange-ring {
                 width: 400px;
                 height: 400px;
-                top: -200px; /* Adjust position for smaller screens */
+                top: -200px;
+                /* Adjust position for smaller screens */
                 left: 50%;
-                transform: translateX(-50%) rotate(-45deg); /* Center and rotate */
+                transform: translateX(-50%) rotate(-45deg);
+                /* Center and rotate */
             }
 
             .personal-goals-image-container,
             .personal-goals-content {
                 max-width: 100%;
-                flex: 1; /* Reset flex basis */
+                flex: 1;
+                /* Reset flex basis */
             }
-            
+
             .personal-goals-image-container {
-                 margin-bottom: var(--spacing-lg);
+                margin-bottom: var(--spacing-lg);
             }
         }
 
         @media (max-width: 768px) {
             .personal-goals-title {
-                font-size: 32px; /* Further reduce font size on smaller screens */
+                font-size: 32px;
+                /* Further reduce font size on smaller screens */
             }
 
             .orange-ring {
-                width: 300px;   
+                width: 300px;
                 height: 300px;
                 top: -150px;
             }
@@ -2657,20 +2896,25 @@
             flex: 1;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px; /* Restored: Creates the subtle internal lines */
-            background-color: #E0E4E7; /* Restored: Color of the grid lines */
+            gap: 1px;
+            /* Restored: Creates the subtle internal lines */
+            background-color: #E0E4E7;
+            /* Restored: Color of the grid lines */
             /* border: 1px solid #E0E4E7; /* REMOVED: Border around the grid */
             /* gap: var(--spacing-md); /* Removed: Increased gap for separation */
             max-width: 500px;
         }
 
         .logo-cell {
-            background-color: #F2F5FA; /* Restored: Same as section background to reveal grid lines */
+            background-color: #F2F5FA;
+            /* Restored: Same as section background to reveal grid lines */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--spacing-md); /* Restored original padding */
-            height: 120px; /* Restored original height */
+            padding: var(--spacing-md);
+            /* Restored original padding */
+            height: 120px;
+            /* Restored original height */
         }
 
         .logo-cell img {
@@ -2706,17 +2950,534 @@
             }
 
             .business-logo-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on smaller screens */
             }
-            
+
             .logo-cell {
                 height: 100px;
             }
         }
 
         @media (max-width: 480px) {
-             .business-logo-grid {
-                grid-template-columns: repeat(1, 1fr); /* 1 column on very small screens */
+            .business-logo-grid {
+                grid-template-columns: repeat(1, 1fr);
+                /* 1 column on very small screens */
+            }
+        }
+
+        .new-courses {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .new-courses .section-subtitle {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .new-courses .section-title {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .new-courses .section-description {
+            font-size: 20px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .new-courses .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .new-courses .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .new-courses .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .new-courses .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .new-courses .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .new-courses .ai-skills-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .new-courses .card-content {
+            padding: 16px;
+        }
+
+        .new-courses .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .new-courses .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .new-courses .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+        }
+
+        .new-courses .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .new-courses .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+        }
+
+        .new-courses .action-buttons {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .free-courses {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .free-courses .section-subtitle {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .free-courses .section-title {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .free-courses .section-description {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .free-courses .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .free-courses .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .free-courses .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .free-courses .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .free-courses .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .free-courses .free-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: white;
+            color: #1f1f1f;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .free-courses .card-content {
+            padding: 16px;
+        }
+
+        .free-courses .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .free-courses .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .free-courses .partner-logo-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: #f3f3f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #1f1f1f;
+            font-weight: 600;
+        }
+
+        .free-courses .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+            line-height: 1.2;
+        }
+
+        .free-courses .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .free-courses .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+        }
+
+        .free-courses .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .free-courses .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .free-courses .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .free-courses .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .free-courses .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .free-courses .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Degree Programs Section Styles */
+        .rc-ProductCardCollection {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .css-1ubt0nh {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .css-1v1mgi3 {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .css-8u6gkz {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .css-lg65q1 {
+            font-size: 20px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 800px;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 0 auto 32px;
+            max-width: 1200px;
+            padding: 0 24px;
+        }
+
+        .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certificate-card:hover {
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 16px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .degree-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0056D2;
+            font-size: 14px;
+            margin-bottom: 4px;
+            margin-top: auto;
+        }
+
+        .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+            font-weight: 400;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #0056D2;
+            color: white;
+            border: none;
+            min-width: 140px;
+        }
+
+        .btn-primary:hover {
+            background: #004099;
+        }
+
+        .btn-link {
+            color: #0056D2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-link::after {
+            content: "→";
+            margin-left: 4px;
+        }
+
+        @media (max-width: 1200px) {
+            .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .css-8u6gkz {
+                font-size: 28px;
+            }
+
+            .css-lg65q1 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .css-1ubt0nh,
+            .certificates-grid,
+            .action-buttons {
+                padding: 0 16px;
             }
         }
     </style>
@@ -2880,7 +3641,6 @@
             </div>
         </div>
     </section>
-
     <!-- Role Selection Section -->
     <section class="roles">
         <div class="container">
@@ -3013,6 +3773,200 @@
             </div>
         </div>
     </section>
+    <section class="popular-certificates">
+        <div class="container">
+            <p class="section-subtitle">Specializations and Professional Certificates</p>
+            <h1 class="section-title">Most Popular Certificates</h1>
+            <p class="section-description">Explore our most popular programs, get job-ready for an in-demand career.</p>
+
+            <div class="certificates-grid">
+                <!-- Google Data Analytics -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/41/4d3d7c05fb42729c9d90352e072ca3/1060x596_GCC-photos_Karrim.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50&crop=faces"
+                            alt="Google Data Analytics" class="card-image">
+                        <div class="ai-skills-badge">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rbn:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            New AI skills
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png"
+                                alt="Google" class="partner-logo">
+                            <span class="partner-name">Google</span>
+                        </div>
+                        <h3 class="certificate-title">Google Data Analytics</h3>
+                        <div class="degree-info">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            Build toward a degree
+                        </div>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
+
+                <!-- Google Project Management -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/bf/b07da9bbe24cb8b0daa00010ff8b22/1060x596_GCC-photos_Ashley.png"
+                            alt="Google Project Management" class="card-image">
+                        <div class="ai-skills-badge">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            New AI skills
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png"
+                                alt="Google" class="partner-logo">
+                            <span class="partner-name">Google</span>
+                        </div>
+                        <h3 class="certificate-title">Google Project Management</h3>
+                        <div class="degree-info">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            Build toward a degree
+                        </div>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
+
+                <!-- Google IT Support -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/e7/246d5ceb234f5bb50ec6b6cf361339/Amie-Hanbury-Hero-Image-.jpg"
+                            alt="Google IT Support" class="card-image">
+                        <div class="ai-skills-badge">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            New AI skills
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png"
+                                alt="Google" class="partner-logo">
+                            <span class="partner-name">Google</span>
+                        </div>
+                        <h3 class="certificate-title">Google IT Support</h3>
+                        <div class="degree-info">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            Build toward a degree
+                        </div>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
+
+                <!-- Google UX Design -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/f9/f48728d31a4af3b8eba082c0b4cb18/1060x596_GCC-photos-1-.png"
+                            alt="Google UX Design" class="card-image">
+                        <div class="ai-skills-badge">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M14.925 3.174a.28.28 0 00-.517 0l-.403.987a.93.93 0 01-.51.51l-.988.404a.28.28 0 000 .517l.988.403a.93.93 0 01.51.51l.403.988a.28.28 0 00.517 0l.403-.988a.931.931 0 01.51-.51l.988-.403a.28.28 0 000-.517l-.988-.404a.931.931 0 01-.51-.51l-.403-.987z" />
+                            </svg>
+                            New AI skills
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png"
+                                alt="Google" class="partner-logo">
+                            <span class="partner-name">Google</span>
+                        </div>
+                        <h3 class="certificate-title">Google UX Design</h3>
+                        <div class="degree-info">
+                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
+                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
+                                <path
+                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
+                                    fill="currentColor"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            Build toward a degree
+                        </div>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">Show 8 more</button>
+                <a href="#" class="btn btn-link">View all →</a>
+            </div>
+        </div>
+    </section>
 
     <!-- GenAI Section -->
     <section class="genai">
@@ -3072,140 +4026,468 @@
         </div>
         <div class="genai-accent"></div>
     </section>
+    <section class="new-courses">
+        <div class="container">
+            <p class="section-subtitle">Courses and Professional Certificates</p>
+            <h2 class="section-title">New on Coursera</h2>
+            <p class="section-description">Explore our newest programs, focused on delivering in-demand skills.</p>
 
-    <!-- Degree Programs Section -->
-    <section class="degree-programs">
-        <div class="degree-container">
-            <div class="section-label">Degree Programs</div>
-            <h2>Find a top degree that fits your life</h2>
-            <p class="subtitle">Breakthrough pricing on 100% online degrees from top universities.</p>
+            <div class="certificates-grid">
+                <!-- DeepLearning.AI Data Analytics -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/59/91c676b93b410692823692e28186db/DeepLearning_Data_Analytics_Banner_1000x1000_V2.2.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="DeepLearning.AI Data Analytics" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png"
+                                alt="DeepLearning.AI" class="partner-logo">
+                            <span class="partner-name">DeepLearning.AI</span>
+                        </div>
+                        <h3 class="certificate-title">DeepLearning.AI Data Analytics</h3>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
 
-            <div class="degree-grid">
-                <a href="#" class="degree-card">
-                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/bachelor-of-science-computer-science-bits/2c1c9800-93b0-48df-b278-a5246da9e086.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
-                        alt="BITS Campus" class="degree-image">
-                    <div class="degree-content">
-                        <div class="university-name">
-                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b9/c608c79b5c498a8fa55b117fc3282f/5.-Square-logo-for-landing-page---Alpha.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
-                                alt="BITS Logo" class="university-logo">
-                            Birla Institute of Technology & Science
+                <!-- UX Design Toolkit -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/3c/c32ad8464340979be89b999d59a330/test-6.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="UX Design Toolkit" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/16/ff7d736fe7440b882e9d4c1ccd997c/coursera-wordmark-logo-full-rgb.png"
+                                alt="Coursera" class="partner-logo">
+                            <span class="partner-name">Coursera</span>
                         </div>
-                        <div class="degree-title">Bachelor of Science in Computer Science</div>
-                        <div class="cds-CommonCard-creditType">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" class="cds-CommonCard-icon">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <p class="css-ls7ln4">Earn a degree</p>
+                        <h3 class="certificate-title">UX Design Toolkit</h3>
+                        <p class="certificate-type">Professional Certificate</p>
+                    </div>
+                </div>
+
+                <!-- Google Agile Essentials -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/5e/b8be221d3b4f2e8053665467c8684d/Jane_1000x1000.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Google Agile Essentials" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/4a/cb36835ae3421187080898a7ecc11d/Google-G_360x360.png"
+                                alt="Google" class="partner-logo">
+                            <span class="partner-name">Google</span>
                         </div>
-                        <div class="degree-tag">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
+                        <h3 class="certificate-title">Google Agile Essentials</h3>
+                        <p class="certificate-type">Course</p>
+                    </div>
+                </div>
+
+                <!-- Adobe Graphic Designer -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/0f/fc84fc39784c879a59d23df5b7765b/Graphic-design-1000x1000.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Adobe Graphic Designer" class="card-image">
+                        <div class="ai-skills-badge">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M14.925 3.174a.28.28 0 00-.517 0l-.403.987a.93.93 0 01-.51.51l-.988.404a.28.28 0 000 .517l.988.403a.93.93 0 01.51.51l.403.988a.28.28 0 00.517 0l.403-.988a.931.931 0 01.51-.51l.988-.403a.28.28 0 000-.517l-.988-.404a.931.931 0 01-.51-.51l-.403-.987z" />
                             </svg>
-                            Degree
+                            New AI skills
                         </div>
                     </div>
-                </a>
-
-                <a href="#" class="degree-card">
-                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/bachelor-of-science-data-science-ai-iitguwahati/d162fb2a-536e-40a7-8e3e-ce849e964736.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
-                        alt="IIT Guwahati Campus" class="degree-image">
-                    <div class="degree-content">
-                        <div class="university-name">
-                            <img src="http://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/34/d6e73dc4eb4731ba332a0dc82830a9/Square-logo-for-partner-landing-page-1-1-.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
-                                alt="IIT Guwahati Logo" class="university-logo">
-                            Indian Institute of Technology Guwahati
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/d9/7ac5ee1c0247dab299ec6a8343f16d/Adobe-A-square.png"
+                                alt="Adobe" class="partner-logo">
+                            <span class="partner-name">Adobe</span>
                         </div>
-                        <div class="degree-title">Bachelor of Science in Data Science & AI</div>
-                        <div class="cds-CommonCard-creditType">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" class="cds-CommonCard-icon">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <p class="css-ls7ln4">Earn a degree</p>
-                        </div>
-                        <div class="degree-tag">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
-                            </svg>
-                            Degree
-                        </div>
+                        <h3 class="certificate-title">Adobe Graphic Designer</h3>
+                        <p class="certificate-type">Professional Certificate</p>
                     </div>
-                </a>
-
-                <a href="#" class="degree-card">
-                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068057/coursera/IIT_Roorkee_ywibci.webp"
-                        alt="IIT Roorkee Campus" class="degree-image">
-                    <div class="degree-content">
-                        <div class="university-name">
-                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/93/dafd90b13544b3844d0967bcb2fe77/iitricon.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
-                                alt="IIT Roorkee Logo" class="university-logo">
-                            IIT Roorkee
-                        </div>
-                        <div class="degree-title">Executive MBA</div>
-                        <div class="cds-CommonCard-creditType">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" class="cds-CommonCard-icon">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <p class="css-ls7ln4">Earn a degree</p>
-                        </div>
-                        <div class="degree-tag">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
-                            </svg>
-                            Degree
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="degree-card">
-                    <img src="https://res.cloudinary.com/dvfk4g3wh/image/upload/v1745068059/coursera/Indian_statistical_institute_bjzoki.webp"
-                        alt="Indian Statistical Institute Campus" class="degree-image">
-                    <div class="degree-content">
-                        <div class="university-name">
-                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/67/ea8ae2575a4402ab7d212dd3b66ace/360-x-360-1-.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
-                                alt="Indian Statistical Institute Logo" class="university-logo">
-                            Indian Statistical Institute
-                        </div>
-
-                        <div class="degree-title">Master of Statistics</div>
-                        <div class="cds-CommonCard-creditType">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" class="cds-CommonCard-icon">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <p class="css-ls7ln4">Earn a degree</p>
-                        </div>
-                        <div class="degree-tag">
-
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M8 1L10 5L14 6L11 9L12 13L8 11L4 13L5 9L2 6L6 5L8 1Z" fill="currentColor" />
-                            </svg>
-                            Degree
-                        </div>
-                    </div>
-                </a>
+                </div>
             </div>
 
-            <div class="degree-actions">
-                <button class="show-more">Show 8 more</button>
-                <a href="#" class="view-all">View all</a>
+            <div class="action-buttons">
+                <button class="btn btn-primary">Show 8 more</button>
+                <a href="#" class="btn btn-link">View all →</a>
             </div>
-
-            <p class="degree-footnote">¹Each university determines admission and the number of pre-approved prior
-                learning credits that may count toward the degree requirements according to institutional policies,
-                which may consider any existing credits you may have.</p>
         </div>
     </section>
+    <section class="free-courses">
+        <div class="container">
+            <p class="section-subtitle">100% Free</p>
+            <h2 class="section-title">Start learning with free courses</h2>
+            <p class="section-description">Explore free online courses from the world's top universities and companies.
+            </p>
+
+            <div class="certificates-grid">
+                <!-- AI in National Security -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/44/4f51448ef4484ca7aaf8ea2fe3b1eb/SCSP_Logo.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="AI in National Security" class="card-image">
+                        <div class="free-tag">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <div class="partner-logo-circle">S</div>
+                            <span class="partner-name">Special Competitive Studies Project</span>
+                        </div>
+                        <h3 class="certificate-title">AI in National Security: Integrating Artificial Intelligence into
+                            Public Sector Missions</h3>
+                        <p class="certificate-type">Course</p>
+                    </div>
+                </div>
+
+                <!-- Open Source Models -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/a5/29e1bc993e4e63897f1f1b233b7474/DeepLearning_Hugging_Face_AI_Banner_1000x1000.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Open Source Models" class="card-image">
+                        <div class="free-tag">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png"
+                                alt="DeepLearning.AI" class="partner-logo">
+                            <span class="partner-name">DeepLearning.AI</span>
+                        </div>
+                        <h3 class="certificate-title">Open Source Models with Hugging Face</h3>
+                        <p class="certificate-type">Project</p>
+                    </div>
+                </div>
+
+                <!-- Multimodal Llama -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/d8/6a5782475148a69fe5ea690ea0867f/V5_DeepLearning_Meta_Multimodal_Llama_Banner_1000x1000.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Multimodal Llama" class="card-image">
+                        <div class="free-tag">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png"
+                                alt="DeepLearning.AI" class="partner-logo">
+                            <span class="partner-name">DeepLearning.AI</span>
+                        </div>
+                        <h3 class="certificate-title">Introducing Multimodal Llama 3.2</h3>
+                        <p class="certificate-type">Project</p>
+                    </div>
+                </div>
+
+                <!-- Business Analytics -->
+                <div class="certificate-card">
+                    <div class="card-image-container">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/66/e2793ae80742ccac9bdebe7f538a1c/excel-g9ac6b342d_1920.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                            alt="Business Analytics" class="card-image">
+                        <div class="free-tag">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="partner-info">
+                            <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/93/57fd6a96044c4bad3139afd3e87fd6/jhu-shield.png"
+                                alt="Johns Hopkins University" class="partner-logo">
+                            <span class="partner-name">Johns Hopkins University</span>
+                        </div>
+                        <h3 class="certificate-title">Business Analytics with Excel: Elementary to Advanced</h3>
+                        <p class="certificate-type">Course</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">Show 8 more</button>
+                <a href="/courses?query=free" class="btn btn-link">View all →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Degree Programs Section -->
+    <section class="rc-ProductCardCollection css-16oqypx" data-e2e="mixed-card-collection"
+        aria-label="Degree Programs Collection">
+        <div class="css-1ubt0nh">
+            <div>
+                <div class="cds-119 css-1v1mgi3 cds-121">Degree Programs</div>
+                <h2 class="cds-119 css-8u6gkz cds-121">Get a head start on a degree today</h2>
+                <p class="cds-119 css-lg65q1 cds-121">With these programs, you can build valuable skills, earn career
+                    credentials, and make progress toward a degree before you even enroll.</p>
+            </div>
+        </div>
+        <div class="certificates-grid">
+            <!-- Master of Engineering -->
+            <!-- Master of Science in Electrical Engineering -->
+            <div class="certificate-card">
+                <div class="card-image-container">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/msee-boulder/thumbnail.jpeg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="University of Colorado Boulder Campus" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="partner-info">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                            alt="University of Colorado Boulder" class="partner-logo">
+                        <span class="partner-name">University of Colorado Boulder</span>
+                    </div>
+                    <h3 class="certificate-title">Master of Science in Electrical Engineering</h3>
+                    <div class="degree-info">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z" />
+                        </svg>
+                        <span>Earn a degree</span>
+                    </div>
+                    <p class="certificate-type">Degree</p>
+                </div>
+            </div>
+
+            <!-- Master of Science in Electrical Engineering -->
+            <div class="certificate-card">
+                <div class="card-image-container">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/msee-boulder/thumbnail.jpeg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="University of Colorado Boulder Campus" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="partner-info">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                            alt="University of Colorado Boulder" class="partner-logo">
+                        <span class="partner-name">University of Colorado Boulder</span>
+                    </div>
+                    <h3 class="certificate-title">Master of Science in Electrical Engineering</h3>
+                    <div class="degree-info">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z" />
+                        </svg>
+                        <span>Earn a degree</span>
+                    </div>
+                    <p class="certificate-type">Degree</p>
+                </div>
+            </div>
+            <!-- Master of Science in Electrical Engineering -->
+            <div class="certificate-card">
+                <div class="card-image-container">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/msee-boulder/thumbnail.jpeg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="University of Colorado Boulder Campus" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="partner-info">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                            alt="University of Colorado Boulder" class="partner-logo">
+                        <span class="partner-name">University of Colorado Boulder</span>
+                    </div>
+                    <h3 class="certificate-title">Master of Science in Electrical Engineering</h3>
+                    <div class="degree-info">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z" />
+                        </svg>
+                        <span>Earn a degree</span>
+                    </div>
+                    <p class="certificate-type">Degree</p>
+                </div>
+            </div>
+            <!-- Master of Science in Electrical Engineering -->
+            <div class="certificate-card">
+                <div class="card-image-container">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/msee-boulder/thumbnail.jpeg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
+                        alt="University of Colorado Boulder Campus" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="partner-info">
+                        <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/http://coursera-university-assets.s3.amazonaws.com/a6/7035b7e00b401383be4e5856b8bdaa/Boulder-FL-VERT-B---cropped.png?auto=format%2Ccompress&dpr=3&w=24&h=24"
+                            alt="University of Colorado Boulder" class="partner-logo">
+                        <span class="partner-name">University of Colorado Boulder</span>
+                    </div>
+                    <h3 class="certificate-title">Master of Science in Electrical Engineering</h3>
+                    <div class="degree-info">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.792 13.917c.139.25.326.43.562.541L8.417 16.5c.11.056.222.094.333.115a1.831 1.831 0 00.671 0c.108-.021.218-.06.329-.115l4.063-2.042c.25-.125.44-.309.572-.552.132-.243.198-.503.198-.781V9.083l2-1v5c0 .195.073.368.22.521.145.153.319.23.52.23a.73.73 0 00.531-.23.718.718 0 00.23-.52V7.77a.701.701 0 00-.105-.37.772.772 0 00-.291-.276L9.75 3.167A1.444 1.444 0 009.083 3a1.405 1.405 0 00-.666.167l-7 3.5a.734.734 0 00-.313.278.743.743 0 00-.104.388c0 .143.035.272.104.388.07.117.174.21.313.279l2.166 1.083v4.042c0 .278.07.542.209.792zm9.683-5.959l-4.392 2.188-5.646-2.813 5.646-2.812 4.392 2.187H9.02a.625.625 0 000 1.25h4.454zm-.392 5.188l-4 1.979-4-1.98v-3.29l3.271 1.624c.111.07.226.118.344.146a1.68 1.68 0 00.746 0c.12-.028.243-.076.368-.146l3.271-1.625v3.292z" />
+                        </svg>
+                        <span>Earn a degree</span>
+                    </div>
+                    <p class="certificate-type">Degree</p>
+                </div>
+            </div>
+
+    </section>
+
+    <style>
+        .degree-programs {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .degree-programs .section-subtitle {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .degree-programs .section-title {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .degree-programs .section-description {
+            font-size: 20px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .degree-programs .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .degree-programs .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .degree-programs .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .degree-programs .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .degree-programs .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .degree-programs .card-content {
+            padding: 16px;
+        }
+
+        .degree-programs .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .degree-programs .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .degree-programs .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+            line-height: 1.2;
+        }
+
+        .degree-programs .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .degree-programs .degree-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0056D2;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .degree-programs .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+        }
+
+        .degree-programs .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .degree-programs .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .degree-programs .btn-primary {
+            background: #0056D2;
+            color: white;
+            border: none;
+        }
+
+        .degree-programs .btn-primary:hover {
+            background: #004099;
+        }
+
+        .degree-programs .btn-link {
+            color: #0056D2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .degree-programs .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .degree-programs .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .degree-programs .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .degree-programs .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .degree-programs .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .degree-programs .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 
     <!-- Explore Section -->
     <section class="explore">
@@ -3372,23 +4654,42 @@
                         Drive your business forward<br>by empowering your talent
                     </h2>
                     <p class="business-hero-text">
-                        Train teams with industry-leading experts and universities, enhanced by AI tools and recognized credentials.
+                        Train teams with industry-leading experts and universities, enhanced by AI tools and recognized
+                        credentials.
                     </p>
                     <a href="#" class="business-hero-button">Discover Coursera for Business</a>
                     <a href="#" class="business-hero-link">Upskill a small team? Check out Coursera for Teams →</a>
                 </div>
-                
+
                 <!-- Right side: Logo Grid -->
                 <div class="business-logo-grid">
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/13nB6DdjBJdV5aWWWB5DbH/115574ebbc6de3dffd98daed665dc736/loreal.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=18" alt="L'Oréal"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2aaUOe2Jitm1Z6OPdylXsL/37974ceb0982ccf2c6fabf3fa6bdb5bc/pandg.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=40" alt="P&G"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2gSh2ySvHF7nLxtb9dlQEt/764bae06b9276de25caa4ed11bf14000/tata.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=37" alt="Tata"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6cQLsEIdYwjlG4whpJ0bau/5cb01b12278ee726314800c15f08c5e2/DANONE_LOGO.png?auto=format%2Ccompress&dpr=3&w=60%25&h=36" alt="Danone"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/46IDJ7jA1jOzKUcuJEdv9x/bccbe406253ab481290052d1580d7eae/Emirates_NBD_logo.png?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Emirates NBD"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2jYSxpX0am6lmzOXiF01eb/b2dad4d9e4844a15e828990aa09b6377/Reliance_logo-2.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Reliance"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1GFMf2tN2JubXPXodUfEhU/f60a309a58fd4a5e750f0497e24a52ab/logo-capgemini.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Capgemini"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Td6rChmrhf755FaNcHMkw/7f172851005dc6275667c667ffa2678a/logo-petrobras.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="Petrobras"></div>
-                    <div class="logo-cell"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7ynjohQJbi7h24Qk5uUyPW/399503cb97a2775554f28921721d6fd1/General_Electric_logo.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30" alt="General Electric"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/13nB6DdjBJdV5aWWWB5DbH/115574ebbc6de3dffd98daed665dc736/loreal.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=18"
+                            alt="L'Oréal"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2aaUOe2Jitm1Z6OPdylXsL/37974ceb0982ccf2c6fabf3fa6bdb5bc/pandg.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=40"
+                            alt="P&G"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2gSh2ySvHF7nLxtb9dlQEt/764bae06b9276de25caa4ed11bf14000/tata.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=37"
+                            alt="Tata"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/6cQLsEIdYwjlG4whpJ0bau/5cb01b12278ee726314800c15f08c5e2/DANONE_LOGO.png?auto=format%2Ccompress&dpr=3&w=60%25&h=36"
+                            alt="Danone"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/46IDJ7jA1jOzKUcuJEdv9x/bccbe406253ab481290052d1580d7eae/Emirates_NBD_logo.png?auto=format%2Ccompress&dpr=3&w=60%25&h=30"
+                            alt="Emirates NBD"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2jYSxpX0am6lmzOXiF01eb/b2dad4d9e4844a15e828990aa09b6377/Reliance_logo-2.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30"
+                            alt="Reliance"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1GFMf2tN2JubXPXodUfEhU/f60a309a58fd4a5e750f0497e24a52ab/logo-capgemini.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30"
+                            alt="Capgemini"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/1Td6rChmrhf755FaNcHMkw/7f172851005dc6275667c667ffa2678a/logo-petrobras.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30"
+                            alt="Petrobras"></div>
+                    <div class="logo-cell"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/7ynjohQJbi7h24Qk5uUyPW/399503cb97a2775554f28921721d6fd1/General_Electric_logo.svg?auto=format%2Ccompress&dpr=3&w=60%25&h=30"
+                            alt="General Electric"></div>
                 </div>
             </div>
         </div>
@@ -3400,9 +4701,8 @@
             <div class="personal-goals-container">
                 <div class="personal-goals-image-container">
                     <div class="orange-ring"></div>
-                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/front-page-rebrand/secondary-consumer-cta/Image-Next-Step.png?auto=format%2Ccompress&dpr=3&w=471&h=330&q=40" 
-                         alt="Confident woman in modern co-working space" 
-                         class="personal-goals-image">
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera_assets.s3.amazonaws.com/front-page-rebrand/secondary-consumer-cta/Image-Next-Step.png?auto=format%2Ccompress&dpr=3&w=471&h=330&q=40"
+                        alt="Confident woman in modern co-working space" class="personal-goals-image">
                 </div>
                 <div class="personal-goals-content">
                     <h2 class="personal-goals-title">
@@ -3418,7 +4718,9 @@
                 </div>
             </div>
             <p class="footnote">
-                ¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report. Content Creator, Machine Learning Engineer and Salesforce Development Representative (1/1/2024 – 12/31/2024). All other job roles (4/1/2024 – 4/1/2025).
+                ¹ Median salary and job opening data are sourced from Lightcast™ Job Postings Report. Content Creator,
+                Machine Learning Engineer and Salesforce Development Representative (1/1/2024 – 12/31/2024). All other
+                job roles (4/1/2024 – 4/1/2025).
             </p>
         </div>
     </section>
@@ -3489,10 +4791,10 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Row 2 -->
-             <div class="footer-grid footer-grid-row-2">
-                 <div class="footer-column">
+            <div class="footer-grid footer-grid-row-2">
+                <div class="footer-column">
                     <h3>Coursera</h3>
                     <ul>
                         <li><a href="#">About</a></li>
@@ -3543,28 +4845,39 @@
                         <!-- Removed Do Not Sell/Share -->
                     </ul>
                 </div>
-                 <div class="footer-badges-column">
-                     <a href="#"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg?auto=format%2Ccompress&dpr=1&w=135&h=40" alt="Download on the App Store" class="app-badge"></a>
-                     <a href="#"><img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png?auto=format%2Ccompress&dpr=1&w=135&h=40" alt="Get it on Google Play" class="app-badge"></a>
-                     <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/2018-B-Corp-Logo-Black-S.png?auto=format%2Ccompress&dpr=3&w=151&h=120&q=40" alt="Certified B Corporation" class="b-corp-logo">
-                 </div>
+                <div class="footer-badges-column">
+                    <a href="#"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/download_on_the_app_store_badge_en.svg?auto=format%2Ccompress&dpr=1&w=135&h=40"
+                            alt="Download on the App Store" class="app-badge"></a>
+                    <a href="#"><img
+                            src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/en_generic_rgb_wo_45.png?auto=format%2Ccompress&dpr=1&w=135&h=40"
+                            alt="Get it on Google Play" class="app-badge"></a>
+                    <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d3njjcbhbojbot.cloudfront.net/web/images/icons/2018-B-Corp-Logo-Black-S.png?auto=format%2Ccompress&dpr=3&w=151&h=120&q=40"
+                        alt="Certified B Corporation" class="b-corp-logo">
+                </div>
             </div>
 
             <!-- Final Row: Copyright and Social Links -->
             <div class="footer-final-row">
-                 <span class="copyright">© 2025 Coursera Inc. All rights reserved.</span>
-                 <div class="social-links">
-                     <a href="#" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                     <a href="#" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                     <a href="#" target="_blank" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                     <a href="#" target="_blank" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                     <a href="#" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                     <a href="#" target="_blank" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                 </div>
+                <span class="copyright">© 2025 Coursera Inc. All rights reserved.</span>
+                <div class="social-links">
+                    <a href="#" target="_blank" class="social-link" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" class="social-link" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank" class="social-link" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" class="social-link" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" class="social-link" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-link" aria-label="TikTok"><i
+                            class="fab fa-tiktok"></i></a>
+                </div>
             </div>
         </div>
     </footer>
-    
+
     <!-- Modal -->
     <div class="career-game-modal" id="careerGameModal">
         <div class="career-game-content">
@@ -3576,6 +4889,145 @@
         </div>
     </div>
 
+    <!-- New on Coursera Section -->
+
+    <style>
+        .new-courses {
+            padding: 48px 0;
+            background: #fff;
+        }
+
+        .new-courses .section-subtitle {
+            font-size: 14px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .new-courses .section-title {
+            font-size: 32px;
+            color: #1f1f1f;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .new-courses .section-description {
+            font-size: 20px;
+            color: #1f1f1f;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .new-courses .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .new-courses .certificate-card {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .new-courses .certificate-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .new-courses .card-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .new-courses .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .new-courses .ai-skills-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .new-courses .card-content {
+            padding: 16px;
+        }
+
+        .new-courses .partner-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .new-courses .partner-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .new-courses .partner-name {
+            font-size: 14px;
+            color: #1f1f1f;
+        }
+
+        .new-courses .certificate-title {
+            font-size: 16px;
+            color: #1f1f1f;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .new-courses .certificate-type {
+            font-size: 14px;
+            color: #6b7780;
+        }
+
+        .new-courses .action-buttons {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .new-courses .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 
     <script type="text/babel">
         // Add the layers data
@@ -3861,7 +5313,6 @@
             );
         }
 
-        // Move the initialization code outside DOMContentLoaded
         const initializeCareerGame = () => {
             console.log('Initializing career game...');
             const careerButton = document.querySelector('.career-game-trigger');
@@ -3934,6 +5385,9 @@
         // Also call initialization after React and other scripts are loaded
         window.addEventListener('load', initializeCareerGame);
     </script>
+
+    <!-- Free Courses Section -->
+
 </body>
 
 </html>
