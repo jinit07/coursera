@@ -160,16 +160,24 @@
 
         .ai-skills-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0, 0, 0, 0.75);
-            color: white;
+            top: 8px;
+            right: 8px;
+            background: var(--white); /* White background */
+            color: #1f1f1f; /* Black text */
             padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            display: flex;
+            border-radius: 6px; /* Slightly more rounded corners */
+            font-size: 15px;
+            font-weight: 700; /* Medium weight */
+            display: inline-flex; /* Changed to inline-flex */
             align-items: center;
-            gap: 4px;
+            gap: 8px; /* Slightly increased gap */
+            border: 1px solid #e0e0e0; /* Light grey border */
+        }
+
+        .ai-skills-badge svg {
+            width: 14px; /* Adjust SVG size */
+            height: 14px;
+            fill: #1f1f1f; /* Ensure SVG is black */
         }
 
         .card-content {
@@ -450,13 +458,14 @@
             color: var(--primary-blue);
             border: 1px solid var(--primary-blue);
             background: transparent;
-            padding: 8px 16px;
+            padding: 8px 24px; /* Increased horizontal padding */
             border-radius: 4px;
             font-size: 14px;
             cursor: pointer;
             transition: all 0.2s;
             height: 40px;
             margin: auto 0;
+            vertical-align: middle; /* Align with text */
         }
 
         .dropdown button:hover,
@@ -555,6 +564,13 @@
             text-decoration: underline;
         }
 
+        /* Add specific rule for the arrow */
+        .dropdown-section .view-all::after {
+            content: "→";
+            margin-left: 6px; /* Adjust spacing as needed */
+            display: inline-block; /* Ensure it behaves correctly */
+        }
+
         .search-bar {
             position: relative;
             flex: 1;
@@ -568,7 +584,8 @@
         .search-input {
             width: 100%;
             height: 40px;
-            padding: 8px 16px 8px 48px;
+            /* Adjusted padding: more right padding for the button */
+            padding: 8px 48px 8px 16px; 
             border: 1px solid #E5E5E5;
             border-radius: 24px;
             font-size: 14px;
@@ -584,17 +601,36 @@
             border-radius: 24px;
         }
 
-        .search-icon {
+        /* Remove old absolute positioning for the icon itself */
+        /* .search-icon { ... } */
+
+        /* New Search Button Styles */
+        .search-button {
             position: absolute;
-            left: 16px;
+            right: 4px; /* Adjust position slightly */
             top: 50%;
             transform: translateY(-50%);
-            color: #6B7780;
-            width: 20px;
-            height: 20px;
+            width: 32px; /* Size of the blue circle */
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            color: var(--white); /* Makes SVG inside white */
+            transition: background-color 0.2s;
+        }
+
+        .search-button:hover {
+            background-color: var(--primary-blue-hover);
+        }
+
+        .search-button .search-icon {
+             width: 18px; /* Size of the magnifying glass */
+             height: 18px;
         }
 
         .nav-right {
@@ -645,10 +681,14 @@
         }
 
         .btn-outline {
-            border: 1px solid var(--primary-blue);
+            border: 2px solid var(--primary-blue); /* Increased border width */
             color: var(--primary-blue);
             background: transparent;
-            padding: 8px 16px;
+            padding: 8px 16px; /* Ensure padding is consistent */
+            font-weight: 700; /* Added bold */
+            height: 40px; /* Match other button heights */
+            display: inline-flex; /* Use flex for alignment */
+            align-items: center; /* Center text vertically */
         }
 
         .btn-outline:hover {
@@ -3601,6 +3641,53 @@
                 gap: 64px;
             }
         }
+
+        /* Style for the login link */
+        .login-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 14px; /* Match other nav link font size */
+            font-weight: 400; /* Ensure it's not bold like button */
+            transition: color 0.2s;
+        }
+        
+        .login-link:hover {
+             /* text-decoration: underline; */ /* Removed underline on hover */
+             color: var(--primary-blue-hover); /* Keep optional darker blue hover */
+        }
+
+        /* .nav-links a:hover was incorrectly placed here, removing duplicate */
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn-link {
+            color: var(--primary-blue);
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        /* New bordered link button style */
+        .btn-link-bordered {
+            color: var(--primary-blue);
+            background: transparent;
+            border: 1px solid var(--primary-blue);
+            border-radius: 4px;
+            padding: 12px 24px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .btn-link-bordered:hover {
+            background: rgba(0, 86, 210, 0.04);
+        }
     </style>
 </head>
 
@@ -3620,15 +3707,16 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">coursera</a>
-                <div class="nav-group">
+                <!-- Left Part -->
                     <div class="nav-left">
+                     <a href="#" class="logo">coursera</a>
                         <div class="dropdown">
                             <button aria-haspopup="true" aria-expanded="false" tabindex="0">
                                 Explore
-                                <span>▾</span>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5XAAAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAACQAAAAAQAAAJAAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAABCgAwAEAAAAAQAAAAwAAAAA543ISgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAl2RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADSSURBVChTlZLRCcMwDEVfC0AERmARTGAExmAERmAROECj2YJJmAERmAGJzAI7UCz4qwQl8SJ/2vn7J6XV1kQiSYIoIrqiiLz17qwhLMMwtO87z/P0PNDCPEmSRJIkRRRFURTlvo+q6jLN8jEcDMMwkFp0PfXsp6nrugxDEASB63ruj2UOgKZpiuM4+783n+16nHf7/f7rAIYhuN73/Vssy/o9XlEU/X8zpmnK7/fTNHU5h6Pb+1/r8b/f93/ffN13HMdaZplljy5XOIqirO8D6tQDb/Zn4CMAAAAASUVORK5CYII=" alt="" class="explore-chevron"> <!-- Custom Chevron -->
                             </button>
                             <div class="dropdown-content" role="menu">
+                            <!-- Dropdown content remains the same -->
                                 <div class="dropdown-section">
                                     <h3 id="roles-heading">Explore roles</h3>
                                     <ul role="menu" aria-labelledby="roles-heading">
@@ -3690,27 +3778,30 @@
                                 </div>
                             </div>
                         </div>
+                </div>
+
+                <!-- Middle Part -->
                         <div class="search-bar">
-                            <svg class="search-icon" viewBox="0 0 24 24" role="img" aria-label="search">
-                                <path
-                                    d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                                    fill="currentColor"></path>
+                    <!-- Icon now inside button -->
+                    <input type="text" class="search-input" placeholder="What do you want to learn?" aria-label="Search courses">
+                    <button class="search-button" aria-label="Search">
+                         <svg class="search-icon" viewBox="0 0 24 24" role="img" >
+                            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"></path>
                             </svg>
-                            <input type="text" class="search-input" placeholder="What do you want to learn?"
-                                aria-label="Search courses">
+                    </button>
                         </div>
-                    </div>
+
+                <!-- Right Part -->
                     <div class="nav-right">
                         <nav>
                             <ul class="nav-links">
                                 <li><a href="#">Online Degrees</a></li>
                                 <li><a href="#" class="career-game-trigger">Find your New Career</a></li>
+                                <li><a href="#" class="login-link">Log In</a></li> <!-- Added class -->
                             </ul>
                         </nav>
                         <div class="auth-buttons">
-                            <a href="#" class="btn btn-outline">Log In</a>
-                            <a href="#" class="btn btn-primary">Join for Free</a>
-                        </div>
+                        <a href="#" class="btn btn-outline">Join for Free</a> <!-- Changed class -->
                     </div>
                 </div>
             </div>
@@ -3907,18 +3998,11 @@
                         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/41/4d3d7c05fb42729c9d90352e072ca3/1060x596_GCC-photos_Karrim.png?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
                             alt="Google Data Analytics" class="card-image project-management-image">
                         <div class="ai-skills-badge">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" id="cds-react-aria1512674515-:rbn:" class="cds-CommonCard-icon css-17st3jf">
-                                <path
-                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
-                                    fill="currentColor"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
-                                    fill="currentColor"></path>
-                            </svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0L8.97979 5.02021L14 6L8.97979 6.97979L8 12L7.02021 6.97979L2 6L7.02021 5.02021L8 0Z" fill="currentColor"/>
+                                <path d="M14 0L14.6968 1.30315L16 2L14.6968 2.69685L14 4L13.3032 2.69685L12 2L13.3032 1.30315L14 0Z" fill="currentColor"/>
+                                <path d="M14 10L14.6968 11.3032L16 12L14.6968 12.6968L14 14L13.3032 12.6968L12 12L13.3032 11.3032L14 10Z" fill="currentColor"/>
+                                </svg>
                             New AI skills
                         </div>
                     </div>
@@ -3954,18 +4038,11 @@
                         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/bf/b07da9bbe24cb8b0daa00010ff8b22/1060x596_GCC-photos_Ashley.png"
                             alt="Google Project Management" class="card-image project-management-image">
                         <div class="ai-skills-badge">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
-                                <path
-                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
-                                    fill="currentColor"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
-                                    fill="currentColor"></path>
-                            </svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0L8.97979 5.02021L14 6L8.97979 6.97979L8 12L7.02021 6.97979L2 6L7.02021 5.02021L8 0Z" fill="currentColor"/>
+                                <path d="M14 0L14.6968 1.30315L16 2L14.6968 2.69685L14 4L13.3032 2.69685L12 2L13.3032 1.30315L14 0Z" fill="currentColor"/>
+                                <path d="M14 10L14.6968 11.3032L16 12L14.6968 12.6968L14 14L13.3032 12.6968L12 12L13.3032 11.3032L14 10Z" fill="currentColor"/>
+                                </svg>
                             New AI skills
                         </div>
                     </div>
@@ -4001,18 +4078,11 @@
                         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/e7/246d5ceb234f5bb50ec6b6cf361339/Amie-Hanbury-Hero-Image-.jpg"
                             alt="Google IT Support" class="card-image project-management-image">
                         <div class="ai-skills-badge">
-                            <svg aria-hidden="true" fill="none" focusable="false" height="16" viewBox="0 0 20 20"
-                                width="16" id="cds-react-aria1512674515-:rhj:" class="cds-CommonCard-icon css-17st3jf">
-                                <path
-                                    d="M13.996 9.136l-1.142.87c-.057.045-.117.045-.18 0-.062-.046-.082-.103-.059-.17l.443-1.416-1.176-.92c-.056-.045-.074-.102-.05-.17.022-.069.073-.103.153-.103h1.414l.444-1.397c.022-.069.073-.103.153-.103s.13.034.153.103l.444 1.397h1.414c.08 0 .131.034.154.103.022.068.005.125-.051.17l-1.177.92.444 1.415c.022.068.002.125-.06.17-.063.046-.122.046-.179 0l-1.142-.869z"
-                                    fill="currentColor"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M19 8c0 1.41-.584 2.684-1.523 3.593v3.398a.832.832 0 01-1 .814l-2.613-.54-2.614.54a.832.832 0 01-1-.814v-3.684A5 5 0 1119 8zm-5 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm0 1.5c.702 0 1.37-.145 1.977-.406v1.576l-2.113-.436-2.114.436v-1.704A4.98 4.98 0 0014 13z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M8.25 5.5H2.5v11h15.75a.75.75 0 010 1.5H2.5c-.413 0-.766-.147-1.06-.44A1.445 1.445 0 011 16.5v-11c0-.412.147-.766.44-1.06.294-.293.647-.44 1.06-.44h5.75a.75.75 0 010 1.5z"
-                                    fill="currentColor"></path>
-                            </svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0L8.97979 5.02021L14 6L8.97979 6.97979L8 12L7.02021 6.97979L2 6L7.02021 5.02021L8 0Z" fill="currentColor"/>
+                                <path d="M14 0L14.6968 1.30315L16 2L14.6968 2.69685L14 4L13.3032 2.69685L12 2L13.3032 1.30315L14 0Z" fill="currentColor"/>
+                                <path d="M14 10L14.6968 11.3032L16 12L14.6968 12.6968L14 14L13.3032 12.6968L12 12L13.3032 11.3032L14 10Z" fill="currentColor"/>
+                                </svg>
                             New AI skills
                         </div>
                     </div>
@@ -4048,10 +4118,11 @@
                         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/f9/f48728d31a4af3b8eba082c0b4cb18/1060x596_GCC-photos-1-.png"
                             alt="Google UX Design" class="card-image project-management-image">
                         <div class="ai-skills-badge">
-                            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                                <path
-                                    d="M14.925 3.174a.28.28 0 00-.517 0l-.403.987a.93.93 0 01-.51.51l-.988.404a.28.28 0 000 .517l.988.403a.93.93 0 01.51.51l.403.988a.28.28 0 00.517 0l.403-.988a.931.931 0 01.51-.51l.988-.403a.28.28 0 000-.517l-.988-.404a.931.931 0 01-.51-.51l-.403-.987z" />
-                            </svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0L8.97979 5.02021L14 6L8.97979 6.97979L8 12L7.02021 6.97979L2 6L7.02021 5.02021L8 0Z" fill="currentColor"/>
+                                <path d="M14 0L14.6968 1.30315L16 2L14.6968 2.69685L14 4L13.3032 2.69685L12 2L13.3032 1.30315L14 0Z" fill="currentColor"/>
+                                <path d="M14 10L14.6968 11.3032L16 12L14.6968 12.6968L14 14L13.3032 12.6968L12 12L13.3032 11.3032L14 10Z" fill="currentColor"/>
+                                </svg>
                             New AI skills
                         </div>
                     </div>
@@ -4084,7 +4155,7 @@
 
             <div class="action-buttons">
                 <button class="btn btn-primary">Show 8 more</button>
-                <a href="#" class="btn btn-link">View all →</a>
+                <a href="#" class="btn-link-bordered">View all →</a>
             </div>
         </div>
     </section>
@@ -4211,10 +4282,11 @@
                         <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://d15cw65ipctsrr.cloudfront.net/0f/fc84fc39784c879a59d23df5b7765b/Graphic-design-1000x1000.jpg?auto=format%2C%20compress%2C%20enhance&dpr=2&w=320&h=180&fit=crop&q=50"
                             alt="Adobe Graphic Designer" class="card-image">
                         <div class="ai-skills-badge">
-                            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                                <path
-                                    d="M14.925 3.174a.28.28 0 00-.517 0l-.403.987a.93.93 0 01-.51.51l-.988.404a.28.28 0 000 .517l.988.403a.93.93 0 01.51.51l.403.988a.28.28 0 00.517 0l.403-.988a.931.931 0 01.51-.51l.988-.403a.28.28 0 000-.517l-.988-.404a.931.931 0 01-.51-.51l-.403-.987z" />
-                            </svg>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0L8.97979 5.02021L14 6L8.97979 6.97979L8 12L7.02021 6.97979L2 6L7.02021 5.02021L8 0Z" fill="currentColor"/>
+                                <path d="M14 0L14.6968 1.30315L16 2L14.6968 2.69685L14 4L13.3032 2.69685L12 2L13.3032 1.30315L14 0Z" fill="currentColor"/>
+                                <path d="M14 10L14.6968 11.3032L16 12L14.6968 12.6968L14 14L13.3032 12.6968L12 12L13.3032 11.3032L14 10Z" fill="currentColor"/>
+                                </svg>
                             New AI skills
                         </div>
                     </div>
@@ -4232,7 +4304,7 @@
 
             <div class="action-buttons">
                 <button class="btn btn-primary">Show 8 more</button>
-                <a href="#" class="btn btn-link">View all →</a>
+                <a href="#" class="btn-link-bordered">View all →</a>
             </div>
         </div>
     </section>
@@ -4319,7 +4391,7 @@
 
             <div class="action-buttons">
                 <button class="btn btn-primary">Show 8 more</button>
-                <a href="/courses?query=free" class="btn btn-link">View all →</a>
+                <a href="/courses?query=free" class="btn-link-bordered">View all →</a>
             </div>
         </div>
     </section>
@@ -4431,7 +4503,7 @@
         </div>
         <div class="action-buttons">
             <button class="btn btn-primary">Show 8 more</button>
-            <a href="#" class="btn btn-link">View all</a>
+            <a href="#" class="btn-link-bordered">View all →</a>
         </div>
     </section>
 
@@ -4871,7 +4943,7 @@
                     <div class="new-testimonial-location">United States</div>
                     <hr class="new-testimonial-divider">
                     <p class="new-testimonial-quote">"Being a mother — especially a working mother means I'm constantly trying to juggle my schedule, my kids' schedules, and work. I am very grateful for the flexible and remote learning programs that Coursera has to offer."</p>
-                </div>
+                    </div>
                 <!-- Testimonial Card 2: Ryan L. -->
                 <div class="new-testimonial-card">
                     <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/66DwUMt1tQTmR4q1JaHPdV/71cbdd4415999eecfcd899283086260c/Circle_Ryan.png?auto=format%2Ccompress&dpr=2&w=202&h=202&q=40" alt="Ryan L." class="new-testimonial-avatar">
@@ -4879,7 +4951,7 @@
                     <div class="new-testimonial-location">United States</div>
                     <hr class="new-testimonial-divider">
                     <p class="new-testimonial-quote">"From taking courses on Coursera, I gained a deep understanding of the UX Design process from start to finish. With the knowledge I gained, I feel prepared for entry-level jobs and internships. I've been able to apply the skills and knowledge I gained to multiple projects and work experiences."</p>
-                </div>
+                    </div>
                 <!-- Testimonial Card 3: Vishal V. -->
                 <div class="new-testimonial-card">
                     <img src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/28Nv1NZrGQsLf4kt8CXMdd/66d2002ee1d804a0a1a9729376648060/Vishal_Verma.png?auto=format%2Ccompress&dpr=2&w=202&h=202&q=40" alt="Vishal V." class="new-testimonial-avatar">
@@ -4887,7 +4959,7 @@
                     <div class="new-testimonial-location">India</div>
                     <hr class="new-testimonial-divider">
                     <p class="new-testimonial-quote">"I really enjoyed my courses. The quizzes, videos, and quick labs provided helpful hands-on experience. Learning on Coursera has given me the confidence and ability to excel in my career. I love this feeling."</p>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
